@@ -1,0 +1,33 @@
+.splash {
+  position: relative;
+  width: 100vw;
+  height: 50vh;
+  &__pic {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    & img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: auto;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+.list {
+  padding-bottom: 16px;
+  width: 100vw;
+  max-width: 1000px;
+  background: #090;
+  &__card {
+    margin: 16px 16px 0;
+    width: calc(100% - 32px);
+    padding: 16px;
+    background: #fff;
+  }
+}

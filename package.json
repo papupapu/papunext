@@ -6,11 +6,32 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p $PORT",
+    "lint": "eslint .",
+    "format": "prettier --write pages/* styles/*",
     "heroku-postbuild": "npm run build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn format"
+    }
   },
   "dependencies": {
     "next": "10.0.3",
+    "prop-types": "^15.7.2",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "sass": "^1.30.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5"
   }
 }
