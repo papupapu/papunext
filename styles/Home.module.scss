@@ -4,9 +4,7 @@
   margin-bottom: 16px;
   width: 100vw;
   height: 70vh;
-  @media only screen and (min-width: 768px) {
-    height: 50vh;
-  }  
+  overflow: hidden;
   @media only screen and (min-width: 950px) {
     height: 40vh;
   }
