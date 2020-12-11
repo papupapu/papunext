@@ -8,19 +8,20 @@ import Footer from '../components/Footer';
 
 import styles from '../styles/Home.module.scss';
 
-function Item({ className }) {
+function Item({ className, uri }) {
   return (
     <div className={className}>
       <picture className={styles.splash__pic}>
         <source
           media="(min-width:768px)"
-          srcSet="https://res.cloudinary.com/dia4050i1/image/upload/v1491757981/surf/1000x751/teahupoo2.jpg"
+          srcSet={`https://res.cloudinary.com/dia4050i1/image/upload/v1491757981/surf/1000x751/${uri}.jpg`}
         />
         <img
-          src="https://res.cloudinary.com/dia4050i1/image/upload/v1491758045/surf/345X259/teahupoo2.jpg"
+          src={`https://res.cloudinary.com/dia4050i1/image/upload/v1491758045/surf/345X259/${uri}.jpg`}
           width="345"
           height="259"
           alt=""
+          load="lazy"
         />
       </picture>
     </div>
@@ -28,34 +29,60 @@ function Item({ className }) {
 }
 Item.propTypes = {
   className: PropTypes.string,
+  uri: PropTypes.string,
 };
 Item.defaultProps = {
   className: '',
+  uri: '',
 };
 
-function Triplet() {
+const slides = [
+  { teahupoo: [1, 2, 3] },
+  { surf: [1, 2, 3] },
+  { surf: [4, 5, 6] },
+];
+
+function Triplet({ cat }) {
+  const category = Object.keys(cat)[0];
+  const catSlides = cat[category];
   return (
     <div className={styles.splash__triplet}>
-      <Item className={styles['splash__triplet--big']} />
-      <Item className={styles['splash__triplet--reg1']} />
-      <Item className={styles['splash__triplet--reg2']} />
+      {catSlides.map((slide, n) => {
+        const className = `splash__triplet--${n === 0 ? 'big' : `reg${n}`}`;
+        return (
+          <Item
+            key={`${category}${slide}`}
+            className={styles[className]}
+            uri={`${category}${slide}`}
+          />
+        );
+      })}
     </div>
   );
 }
+Triplet.propTypes = {
+  cat: PropTypes.instanceOf(Object),
+};
+Triplet.defaultProps = {
+  cat: {},
+};
 
 export default function Home() {
   return (
     <div className="glob_container">
       <Head>
-      < meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
       </Head>
       <Header />
       <div className="glob_content">
         <div className={styles.splash}>
           <div className={styles.splash__slider}>
-            <Triplet />
-            <Triplet />
-            <Triplet />
+            {slides.map((cat) => {
+              return <Triplet cat={cat} />;
+            })}
           </div>
         </div>
         <div className={styles.list}>
