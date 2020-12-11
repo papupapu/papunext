@@ -21,7 +21,7 @@ function Item({ className, uri }) {
           width="345"
           height="259"
           alt=""
-          load="lazy"
+          loading="lazy"
         />
       </picture>
     </div>
