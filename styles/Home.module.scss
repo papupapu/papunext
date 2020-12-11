@@ -1,5 +1,6 @@
 .splash {
-  position: relative;
+  display: flex;
+  justify-content: center;
   width: 100vw;
   height: 50vh;
   &__pic {
@@ -16,6 +17,38 @@
       width: auto;
       min-height: 100%;
       transform: translate(-50%, -50%);
+    }
+  }
+  &__slider {
+    display: flex;
+    width: calc(210vw + 90px);
+    height: 100%;    
+  }
+  &__triplet {
+    display: flex;
+    padding: 0 16px;
+    width: 70vw;
+    height: 100%;
+    background: #f0f0f0;
+    &--big {
+      min-width: 60%;
+      height: 100%;
+      background: #009900;
+    }
+    &--reg {
+      display: flex;
+      flex-direction: column;
+      min-width: 40%;
+      height: 100%;
+      background: #f0f000;
+      & div{
+        min-height: 50%;
+      }
+    }
+    &--itm {
+      position: relative;
+      height: 100%;
+      background: #009900;
     }
   }
 }
