@@ -1,13 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import Head from 'next/head';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 import styles from '../styles/Home.module.scss';
 
-function Item() {
+function Item({ className }) {
   return (
-    <div className={styles['splash__triplet--itm']}>
+    <div className={className}>
       <picture className={styles.splash__pic}>
         <source
           media="(min-width:768px)"
@@ -22,18 +25,20 @@ function Item() {
       </picture>
     </div>
   );
-} 
+}
+Item.propTypes = {
+  className: PropTypes.string,
+};
+Item.defaultProps = {
+  className: '',
+};
 
 function Triplet() {
-  return(
+  return (
     <div className={styles.splash__triplet}>
-      <div className={styles['splash__triplet--big']}>
-        <Item />
-      </div>
-      <div className={styles['splash__triplet--reg']}>
-        <Item />
-        <Item />
-      </div>
+      <Item className={styles['splash__triplet--big']} />
+      <Item className={styles['splash__triplet--reg1']} />
+      <Item className={styles['splash__triplet--reg2']} />
     </div>
   );
 }
@@ -41,6 +46,9 @@ function Triplet() {
 export default function Home() {
   return (
     <div className="glob_container">
+      <Head>
+      < meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+      </Head>
       <Header />
       <div className="glob_content">
         <div className={styles.splash}>
