@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import styles from '../splash.module.scss';
 
-const imgBase = 'https://res.cloudinary.com/dia4050i1/image/upload/v1607806886/next';
+const imgBase =
+  'https://res.cloudinary.com/dia4050i1/image/upload/v1607806886/next';
 
 export default function Slide({ className, uri }) {
   return (
