@@ -9,11 +9,7 @@ import Splash from '../components/HP/Splash';
 
 import styles from '../styles/Home.module.scss';
 
-const slides = [
-  { surf: [1, 2, 3] },
-  { teahupoo: [1, 2, 3] },
-  { surf: [4, 5, 6] },
-];
+const slides = [{ s: [1, 2, 3] }, { t: [1, 2, 3] }, { s: [4, 5, 6] }];
 
 export default function Home() {
   return (

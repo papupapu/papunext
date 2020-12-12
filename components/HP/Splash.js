@@ -1,20 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Image from 'next/image';
-
 import styles from './splash.module.scss';
 
 function Item({ className, uri }) {
   return (
     <div className={className}>
-      <Image
-        src={`https://res.cloudinary.com/dia4050i1/image/upload/v1491757981/surf/1000x751/${uri}.jpg`}
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center"
-        alt="boh"
-      />
+      <picture className={styles.splash__triplet__pic}>
+        <source
+          media="(min-width:950px)"
+          srcSet={`https://res.cloudinary.com/dia4050i1/image/upload/v1607775109/next/des/${uri}.jpg`}
+        />
+        <source
+          media="(min-width:768px)"
+          srcSet={`https://res.cloudinary.com/dia4050i1/image/upload/v1607775109/next/tab/${uri}.jpg`}
+        />
+        <img
+          className={styles.splash__triplet__img}
+          src={`https://res.cloudinary.com/dia4050i1/image/upload/v1607775109/next/mob/${uri}.jpg`}
+          width="414"
+          height="628"
+          alt=""
+          loading="lazy"
+        />
+      </picture>
     </div>
   );
 }
