@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import styles from './splash.module.scss';
 
-function Item({ className, uri }) {
+function Item({ className, uri, imgHasPriority }) {
   return (
     <div className={className}>
       <Image
@@ -14,6 +14,7 @@ function Item({ className, uri }) {
         objectFit="cover"
         objectPosition="center"
         alt="boh"
+        priority={imgHasPriority}
       />
     </div>
   );
@@ -21,16 +22,25 @@ function Item({ className, uri }) {
 Item.propTypes = {
   className: PropTypes.string,
   uri: PropTypes.string,
+  imgHasPriority: PropTypes.bool,
 };
 Item.defaultProps = {
   className: '',
   uri: '',
+  imgHasPriority: false,
 };
 
-function Triplet({ cat, className }) {
+function Triplet({ cat, pos }) {
   const category = Object.keys(cat)[0];
   const catSlides = cat[category];
-  const triCls = `${styles.splash__triplet}${className ? ` ${className}` : ''}`;
+  let posClassName = styles['splash__triplet--main'];
+  if (pos !== 1) {
+    posClassName =
+      pos === 2
+        ? styles['splash__triplet--right']
+        : styles['splash__triplet--left'];
+  }
+  const triCls = `${styles.splash__triplet} ${posClassName}`;
   return (
     <div className={triCls}>
       {catSlides.map((slide, n) => {
@@ -40,6 +50,7 @@ function Triplet({ cat, className }) {
             key={`${category}${slide}`}
             className={styles[cls]}
             uri={`${category}${slide}`}
+            imgHasPriority={pos === 1 && n === 0}
           />
         );
       })}
@@ -48,27 +59,20 @@ function Triplet({ cat, className }) {
 }
 Triplet.propTypes = {
   cat: PropTypes.instanceOf(Object),
-  className: PropTypes.string,
+  pos: PropTypes.number,
 };
 Triplet.defaultProps = {
   cat: {},
-  className: '',
+  pos: 0,
 };
 
 export default function Splash({ slides }) {
   return (
     <div className={styles.splash}>
       <div className={styles.splash__slider}>
-        {slides.map((cat, x) => {
-          let cls = styles['splash__triplet--main'];
-          if (x !== 0) {
-            cls =
-              x === 1
-                ? styles['splash__triplet--right']
-                : styles['splash__triplet--left'];
-          }
-          return <Triplet key={`${cat}${x + 1}`} cat={cat} className={cls} />;
-        })}
+        {slides.map((cat, x) => (
+          <Triplet key={`${cat}${x + 1}`} cat={cat} pos={x + 1} />
+        ))}
       </div>
     </div>
   );
