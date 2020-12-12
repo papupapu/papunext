@@ -1,46 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Image from 'next/image';
-
 import styles from './splash.module.scss';
 
-function Item({ className, uri, imgHasPriority }) {
+function Item({ className, uri }) {
   return (
     <div className={className}>
-      <Image
-        src={`https://res.cloudinary.com/dia4050i1/image/upload/v1491757981/surf/1000x751/${uri}.jpg`}
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center"
-        alt="boh"
-        priority={imgHasPriority}
-      />
+      <picture className={styles.splash__triplet__pic}>
+        <source
+          media="(min-width:950px)"
+          srcSet={`https://res.cloudinary.com/dia4050i1/image/upload/v1607775109/next/des/${uri}.jpg`}
+        />
+        <source
+          media="(min-width:768px)"
+          srcSet={`https://res.cloudinary.com/dia4050i1/image/upload/v1607775109/next/tab/${uri}.jpg`}
+        />
+        <img
+          className={styles.splash__triplet__img}
+          src={`https://res.cloudinary.com/dia4050i1/image/upload/v1607775109/next/mob/${uri}.jpg`}
+          width="414"
+          height="628"
+          alt=""
+          loading="lazy"
+        />
+      </picture>
     </div>
   );
 }
 Item.propTypes = {
   className: PropTypes.string,
   uri: PropTypes.string,
-  imgHasPriority: PropTypes.bool,
 };
 Item.defaultProps = {
   className: '',
   uri: '',
-  imgHasPriority: false,
 };
 
-function Triplet({ cat, pos }) {
+function Triplet({ cat, className }) {
   const category = Object.keys(cat)[0];
   const catSlides = cat[category];
-  let posClassName = styles['splash__triplet--main'];
-  if (pos !== 1) {
-    posClassName =
-      pos === 2
-        ? styles['splash__triplet--right']
-        : styles['splash__triplet--left'];
-  }
-  const triCls = `${styles.splash__triplet} ${posClassName}`;
+  const triCls = `${styles.splash__triplet}${className ? ` ${className}` : ''}`;
   return (
     <div className={triCls}>
       {catSlides.map((slide, n) => {
@@ -50,7 +49,6 @@ function Triplet({ cat, pos }) {
             key={`${category}${slide}`}
             className={styles[cls]}
             uri={`${category}${slide}`}
-            imgHasPriority={pos === 1 && n === 0}
           />
         );
       })}
@@ -59,20 +57,27 @@ function Triplet({ cat, pos }) {
 }
 Triplet.propTypes = {
   cat: PropTypes.instanceOf(Object),
-  pos: PropTypes.number,
+  className: PropTypes.string,
 };
 Triplet.defaultProps = {
   cat: {},
-  pos: 0,
+  className: '',
 };
 
 export default function Splash({ slides }) {
   return (
     <div className={styles.splash}>
       <div className={styles.splash__slider}>
-        {slides.map((cat, x) => (
-          <Triplet key={`${cat}${x + 1}`} cat={cat} pos={x + 1} />
-        ))}
+        {slides.map((cat, x) => {
+          let cls = styles['splash__triplet--main'];
+          if (x !== 0) {
+            cls =
+              x === 1
+                ? styles['splash__triplet--right']
+                : styles['splash__triplet--left'];
+          }
+          return <Triplet key={`${cat}${x + 1}`} cat={cat} className={cls} />;
+        })}
       </div>
     </div>
   );

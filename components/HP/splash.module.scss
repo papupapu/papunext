@@ -6,18 +6,24 @@
   height: 70vh;
   overflow: hidden;
   @media only screen and (min-width: 950px) {
-    height: 40vh;
+    height: 45vh;
   }
   @media only screen and (min-width: 1240px) {
-    height: 50vh;
+    height: 55vh;
+  }
+  @media only screen and (min-width: 1366px) {
+    height: 60vh;
   }
   &__slider {
     display: flex;
-    width: calc(225vw + 96px);
+    width: 100vw;
     height: 100%;
-    justify-content: center;
+    transform: translate(-300vw, 0px);
+    justify-content: flex-start;
     @media only screen and (min-width: 950px) {
       justify-content: flex-start;
+      width: calc(225vw + 96px);
+      transform: translate(0px, 0px);
     }
   }
   &__triplet {
@@ -57,11 +63,41 @@
     }
     &--reg1 {
       position: relative;
-      grid-column-start: 2;
+      width: 100vw;
+      height: 100%;
+      @media only screen and (min-width: 950px) {
+        width: auto;
+        height: auto;
+        grid-column-start: 2;
+      }
     }
     &--reg2 {
       position: relative;
-      grid-column-start: 2;
+      width: 100vw;
+      height: 100%;
+      @media only screen and (min-width: 950px) {
+        width: auto;
+        height: auto;
+        grid-column-start: 2;
+      }
+    }
+    &__pic {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+    &__img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      border-radius: 2px;
     }
   }
 }
