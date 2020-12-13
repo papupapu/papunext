@@ -21,11 +21,15 @@
     height: 100%;
     transform: translate(-300vw, 0px);
     justify-content: flex-start;
+
     @media only screen and (min-width: 950px) {
       justify-content: flex-start;
       width: calc(225vw + 96px);
       transform: translate(0px, 0px);
       transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    &.swiping {
+      touch-action: none;
     }
     &.wTransition {
       transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1);

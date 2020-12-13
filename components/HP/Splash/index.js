@@ -5,6 +5,18 @@ import Triplet from './Triplet';
 
 import styles from './splash.module.scss';
 
+const disableScroll = () => {
+  if (window) {
+    document.body.classList.add('noscroll');
+  }
+};
+
+const enableScroll = () => {
+  if (window) {
+    document.body.classList.remove('noscroll');
+  }
+};
+
 export default function Splash({ slides }) {
   const slider = useRef(null);
   const [vw, setVW] = useState(null);
@@ -45,18 +57,27 @@ export default function Splash({ slides }) {
 
   const prevSlide = () => {
     const newCurrent = current - 1;
-    const coords = vw * newCurrent * -1;
-    slider.current.style.transform = `translate(${coords}px,0)`;
-    setPos(coords);
-    setCurrent(newCurrent);
+    const coords = newCurrent === 0 ? 0 : vw * newCurrent * -1;
+    const limit = isDesktop ? -1 : 0;
+    if (newCurrent >= limit) {
+      slider.current.style.transform = `translate(${coords}px,0)`;
+      setPos(coords);
+      setCurrent(newCurrent);
+    } else {
+      slider.current.style.transform = `translate(${pos}px,0)`;
+    }
   };
 
   const nextSlide = () => {
     const newCurrent = current + 1;
     const coords = vw * newCurrent * -1;
-    slider.current.style.transform = `translate(${coords}px,0)`;
-    setPos(coords);
-    setCurrent(newCurrent);
+    if (newCurrent <= 8) {
+      slider.current.style.transform = `translate(${coords}px,0)`;
+      setPos(coords);
+      setCurrent(newCurrent);
+    } else {
+      slider.current.style.transform = `translate(${pos}px,0)`;
+    }
   };
 
   const touchStart = (e) => {
@@ -73,6 +94,7 @@ export default function Splash({ slides }) {
     if (Math.abs(_deltaY) > 5 && Math.abs(_deltaY) > Math.abs(_deltaX) / 2) {
       setDeltaX(0);
     } else {
+      disableScroll();
       setDirection(_deltaX < 0 ? 'next' : 'prev');
       setDeltaX(_deltaX);
       const coords = deltaX + vw * current * -1;
@@ -85,7 +107,6 @@ export default function Splash({ slides }) {
   const touchEnd = () => {
     if (!slider.current) return;
     slider.current.classList.add(styles.wTransition);
-
     if (Math.abs(deltaX) > vw / 4) {
       if (direction === 'next') {
         nextSlide();
@@ -95,12 +116,15 @@ export default function Splash({ slides }) {
     } else {
       slider.current.style.transform = `translate(${pos}px,0)`;
     }
-    setStartX(0);
-    setStartY(0);
-    setDeltaX(0);
+    setTimeout(() => {
+      setStartX(0);
+      setStartY(0);
+      setDeltaX(0);
+    }, 155);
+    enableScroll();
   };
 
-  const style = pos ? { transform: `translate(${pos}px, 0px)` } : null;
+  const style = pos !== null ? { transform: `translate(${pos}px, 0px)` } : null;
   const prev =
     isDesktop && current > -1 ? (
       <button
