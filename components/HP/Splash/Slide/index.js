@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import styles from '../splash.module.scss';
 
-// const imgBase = 'https://res.cloudinary.com/dia4050i1/image/upload/v1607775109/next';
-const imgBase = '';
+const imgBase =
+  'https://res.cloudinary.com/dia4050i1/image/upload/v1607806886/next';
 
 export default function Slide({ className, uri }) {
   return (
@@ -13,27 +13,27 @@ export default function Slide({ className, uri }) {
         <source
           type="image/webp"
           media="(min-width:950px)"
-          srcSet={`${imgBase}/des/${uri}.webp`}
+          srcSet={`${imgBase}/des/webp/${uri}.webp`}
         />
         <source
           type="image/webp"
           media="(min-width:768px)"
-          srcSet={`${imgBase}/tab/${uri}.webp`}
+          srcSet={`${imgBase}/tab/webp/${uri}.webp`}
         />
         <source
           type="image/jpeg"
           media="(min-width:950px)"
-          srcSet={`${imgBase}/des/${uri}.jpg`}
+          srcSet={`${imgBase}/des/jpg/${uri}.jpg`}
         />
         <source
           type="image/jpeg"
           media="(min-width:768px)"
-          srcSet={`${imgBase}/tab/${uri}.jpg`}
+          srcSet={`${imgBase}/tab/jpg/${uri}.jpg`}
         />
-        <source type="image/webp" srcSet={`${imgBase}/mob/${uri}.webp`} />
+        <source type="image/webp" srcSet={`${imgBase}/mob/webp/${uri}.webp`} />
         <img
           className={styles.splash__triplet__img}
-          src={`${imgBase}/mob/${uri}.jpg`}
+          src={`${imgBase}/mob/jpg/${uri}.jpg`}
           width="414"
           height="628"
           alt=""
