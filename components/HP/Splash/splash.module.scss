@@ -5,10 +5,11 @@
   margin-bottom: 16px;
   width: 100vw;
   height: 70vh;
+  background: #394367;
   overflow: hidden;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
+
   @media only screen and (min-width: 950px) {
+    background: #fff;
     height: 45vh;
   }
   @media only screen and (min-width: 1240px) {
@@ -24,6 +25,10 @@
     transform: translate3d(-300vw, 0px, 0);
     justify-content: flex-start;
     will-change: transform;
+    /* ios flickering fixes */
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    perspective: 1000;
 
     @media only screen and (min-width: 950px) {
       justify-content: flex-start;
