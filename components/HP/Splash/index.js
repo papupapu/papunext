@@ -50,7 +50,7 @@ export default function Splash({ slides }) {
   // const gotoSlide = (n) => {
   //   const newCurrent = n;
   //   const coords = vw * newCurrent * -1;
-  //   slider.current.style.transform = `translate(${coords}px,0)`;
+  //   slider.current.style.transform = `translate3d(${coords}px,0,0)`;
   //   setPos(coords);
   //   setCurrent(newCurrent);
   // };
@@ -60,11 +60,11 @@ export default function Splash({ slides }) {
     const coords = newCurrent === 0 ? 0 : vw * newCurrent * -1;
     const limit = isDesktop ? -1 : 0;
     if (newCurrent >= limit) {
-      slider.current.style.transform = `translate(${coords}px,0)`;
+      slider.current.style.transform = `translate3d(${coords}px,0, 0)`;
       setPos(coords);
       setCurrent(newCurrent);
     } else {
-      slider.current.style.transform = `translate(${pos}px,0)`;
+      slider.current.style.transform = `translate3d(${pos}px,0,0)`;
     }
   };
 
@@ -72,11 +72,11 @@ export default function Splash({ slides }) {
     const newCurrent = current + 1;
     const coords = vw * newCurrent * -1;
     if (newCurrent <= 8) {
-      slider.current.style.transform = `translate(${coords}px,0)`;
+      slider.current.style.transform = `translate3d(${coords}px,0,0)`;
       setPos(coords);
       setCurrent(newCurrent);
     } else {
-      slider.current.style.transform = `translate(${pos}px,0)`;
+      slider.current.style.transform = `translate3d(${pos}px,0,0)`;
     }
   };
 
@@ -99,7 +99,7 @@ export default function Splash({ slides }) {
       setDeltaX(_deltaX);
       const coords = deltaX + vw * current * -1;
       if (slider) {
-        slider.current.style.transform = `translate(${coords}px,0)`;
+        slider.current.style.transform = `translate3d(${coords}px,0,0)`;
       }
     }
   };
@@ -114,7 +114,7 @@ export default function Splash({ slides }) {
         prevSlide();
       }
     } else {
-      slider.current.style.transform = `translate(${pos}px,0)`;
+      slider.current.style.transform = `translate3d(${pos}px,0,0)`;
     }
     setTimeout(() => {
       setStartX(0);
@@ -124,7 +124,8 @@ export default function Splash({ slides }) {
     enableScroll();
   };
 
-  const style = pos !== null ? { transform: `translate(${pos}px, 0px)` } : null;
+  const style =
+    pos !== null ? { transform: `translate3d(${pos}px,0,0)` } : null;
   const prev =
     isDesktop && current > -1 ? (
       <button

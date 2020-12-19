@@ -19,9 +19,10 @@
     display: flex;
     width: 100vw;
     height: 100%;
-    transform: translate(-300vw, 0px);
+    transform: translate3d(-300vw, 0px, 0);
     justify-content: flex-start;
     will-change: transform;
+    backface-visibility: hidden;
 
     @media only screen and (min-width: 950px) {
       justify-content: flex-start;
