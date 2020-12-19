@@ -157,19 +157,41 @@
     @media only screen and (min-width: 950px) {
       display: block;
       position: absolute;
-      top: 50%;
-      margin-top: -30px;
-      width: 60px;
-      height: 60px;
-      border-radius: 30px;
-      background: #fff;
+      top: 0;
+      width: calc(12.5vw - 16px);
+      height: 100%;
       border: 0 none;
       cursor: pointer;
+      z-index: 1;
+      &:after {
+        position: absolute;
+        top: 50%;
+        margin-top: -30px;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        background: #fff;
+        border-radius: 50%;
+      }
+      &:hover {
+        &:after {
+          color: #f90;
+        }
+      }
       &--prev {
-        left: 16px;
+        left: 0;
+        &:after {
+          content: 'prev';
+          left: 16px;
+        }
       }
       &--next {
-        right: 16px;
+        right: 0;
+        &:after {
+          content: 'next';
+          right: 16px;
+        }
       }
     }
   }

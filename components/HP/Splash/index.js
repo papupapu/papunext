@@ -131,9 +131,8 @@ export default function Splash({ slides }) {
         type="button"
         onClick={prevSlide}
         className={`${styles.splash__nav} ${styles['splash__nav--prev']}`}
-      >
-        prev
-      </button>
+        aria-label="prev"
+      />
     ) : null;
   const next =
     isDesktop && current < 1 ? (
@@ -141,9 +140,8 @@ export default function Splash({ slides }) {
         type="button"
         onClick={nextSlide}
         className={`${styles.splash__nav} ${styles['splash__nav--next']}`}
-      >
-        next
-      </button>
+        aria-label="next"
+      />
     ) : null;
   return (
     <div className={styles.splash}>
