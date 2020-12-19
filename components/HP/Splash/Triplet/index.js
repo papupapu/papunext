@@ -23,7 +23,9 @@ function Triplet({ cat, order }) {
         return (
           <Slide
             key={`${category}${slide}`}
-            className={styles[`splash__triplet--${itemPos}`]}
+            className={`${styles[`splash__triplet--slide`]} ${
+              styles[`splash__triplet--${itemPos}`]
+            }`}
             uri={`${category}${slide}`}
           />
         );

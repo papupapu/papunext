@@ -71,7 +71,7 @@
       width: 75vw;
       height: 100%;
     }
-    &--big {
+    &--slide {
       position: relative;
       width: 100vw;
       height: 100%;
@@ -83,22 +83,16 @@
       @media only screen and (min-width: 950px) {
         width: auto;
         height: auto;
+      }
+    }
+    &--big {
+      @media only screen and (min-width: 950px) {
         grid-column-start: 1;
         grid-row: 1 / 3;
       }
     }
     &--reg {
-      position: relative;
-      width: 100vw;
-      height: 100%;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-
       @media only screen and (min-width: 950px) {
-        width: auto;
-        height: auto;
         grid-column-start: 2;
         & h1 {
           padding-top: 7px;
