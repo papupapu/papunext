@@ -6,6 +6,8 @@
   width: 100vw;
   height: 70vh;
   overflow: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
   @media only screen and (min-width: 950px) {
     height: 45vh;
   }
@@ -22,7 +24,6 @@
     transform: translate3d(-300vw, 0px, 0);
     justify-content: flex-start;
     will-change: transform;
-    backface-visibility: hidden;
 
     @media only screen and (min-width: 950px) {
       justify-content: flex-start;
