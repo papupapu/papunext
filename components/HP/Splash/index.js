@@ -127,7 +127,7 @@ export default function Splash({ slides }) {
   const style =
     pos !== null ? { transform: `translate3d(${pos}px,0,0)` } : null;
   const prev =
-    isDesktop && current > -1 ? (
+    current > -1 ? (
       <button
         type="button"
         onClick={prevSlide}
@@ -136,7 +136,7 @@ export default function Splash({ slides }) {
       />
     ) : null;
   const next =
-    isDesktop && current < 1 ? (
+    current < 1 ? (
       <button
         type="button"
         onClick={nextSlide}
