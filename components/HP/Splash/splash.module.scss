@@ -206,6 +206,11 @@
           right: 16px;
         }
       }
+      &--ghost {
+        &:after {
+          display: none;
+        }
+      }
     }
   }
 }

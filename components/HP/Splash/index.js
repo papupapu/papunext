@@ -126,24 +126,26 @@ export default function Splash({ slides }) {
 
   const style =
     pos !== null ? { transform: `translate3d(${pos}px,0,0)` } : null;
-  const prev =
-    current > -1 ? (
-      <button
-        type="button"
-        onClick={prevSlide}
-        className={`${styles.splash__nav} ${styles['splash__nav--prev']}`}
-        aria-label="prev"
-      />
-    ) : null;
-  const next =
-    current < 1 ? (
-      <button
-        type="button"
-        onClick={nextSlide}
-        className={`${styles.splash__nav} ${styles['splash__nav--next']}`}
-        aria-label="next"
-      />
-    ) : null;
+  const prev = (
+    <button
+      type="button"
+      onClick={prevSlide}
+      className={`${styles.splash__nav} ${styles['splash__nav--prev']}${
+        current > -1 ? '' : ` ${styles['splash__nav--ghost']}`
+      }`}
+      aria-label="prev"
+    />
+  );
+  const next = (
+    <button
+      type="button"
+      onClick={nextSlide}
+      className={`${styles.splash__nav} ${styles['splash__nav--next']}${
+        current < 1 ? '' : ` ${styles['splash__nav--ghost']}`
+      }`}
+      aria-label="next"
+    />
+  );
   return (
     <div className={styles.splash}>
       <div
