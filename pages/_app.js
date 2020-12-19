@@ -6,6 +6,7 @@ import '../styles/globals.scss';
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
+export default MyApp;
 MyApp.propTypes = {
   Component: PropTypes.oneOfType([
     PropTypes.func,
@@ -19,4 +20,3 @@ MyApp.defaultProps = {
   Component: null,
   pageProps: {},
 };
-export default MyApp;
