@@ -33,6 +33,7 @@ function Triplet({ cat, order }) {
     </div>
   );
 }
+
 Triplet.propTypes = {
   cat: PropTypes.instanceOf(Object),
   order: PropTypes.number,
