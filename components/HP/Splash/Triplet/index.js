@@ -19,7 +19,7 @@ function Triplet({ cat, order }) {
   return (
     <div className={tripletCls}>
       {catSlides.map((slide, n) => {
-        const itemPos = n === 0 ? 'big' : `reg${n}`;
+        const itemPos = n === 0 ? 'big' : 'reg';
         return (
           <Slide
             key={`${category}${slide}`}
