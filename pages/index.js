@@ -8,7 +8,21 @@ import Splash from '../components/HP/Splash';
 
 import styles from '../styles/Home.module.scss';
 
-const slides = [{ s: [1, 2, 3] }, { t: [1, 2, 3] }, { s: [4, 5, 6] }];
+function contents(cat) {
+  return [...Array(3).keys()].map((i, x) => ({
+    title:
+      'Quando qualcuno scrive qualcosa che valga la pena leggere... è bene leggerla!',
+    description:
+      'suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca',
+    img: `${cat}${x + 1}`,
+  }));
+}
+
+const slides = [
+  { s: contents('s') },
+  { t: contents('t') },
+  { s: contents('s') },
+];
 
 export default function Home() {
   return (

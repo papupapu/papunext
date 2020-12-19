@@ -22,11 +22,11 @@ function Triplet({ cat, order }) {
         const itemPos = n === 0 ? 'big' : 'reg';
         return (
           <Slide
-            key={`${category}${slide}`}
+            key={`${category}${n + 1}`}
+            contents={slide}
             className={`${styles[`splash__triplet--slide`]} ${
               styles[`splash__triplet--${itemPos}`]
             }`}
-            uri={`${category}${slide}`}
           />
         );
       })}
