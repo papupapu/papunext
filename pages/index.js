@@ -8,20 +8,21 @@ import Splash from '../components/HP/Splash';
 
 import styles from '../styles/Home.module.scss';
 
-function contents(cat) {
+function contents(cat, secondSlot = null) {
+  const add = !secondSlot ? 0 : 3;
   return [...Array(3).keys()].map((i, x) => ({
     title:
       'Quando qualcuno scrive qualcosa che valga la pena leggere... è bene leggerla!',
     description:
       'suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca suca',
-    img: `${cat}${x + 1}`,
+    img: `${cat}${x + add + 1}`,
   }));
 }
 
 const slides = [
   { s: contents('s') },
   { t: contents('t') },
-  { s: contents('s') },
+  { s: contents('s', 1) },
 ];
 
 export default function Home() {
