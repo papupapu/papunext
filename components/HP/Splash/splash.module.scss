@@ -7,6 +7,10 @@
   height: 70vh;
   background: #394367;
   overflow: hidden;
+  /* safari flickering fixes */
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000;
 
   @media only screen and (min-width: 950px) {
     background: #fff;
