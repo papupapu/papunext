@@ -30,7 +30,7 @@ export default function Splash({ slides }) {
 
   useEffect(() => {
     const _vw = document.documentElement.clientWidth;
-    const _isDesktop = _vw >= 950;
+    const _isDesktop = _vw >= 1024;
 
     let initialPos = 0;
     let initialCurrent = 0;
