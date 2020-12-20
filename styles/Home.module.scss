@@ -3,7 +3,7 @@
   padding-bottom: 16px;
   width: 100vw;
   background: #f6f5f3;
-  @media only screen and (min-width: 950px) {
+  @media only screen and (min-width: 1024px) {
     margin-bottom: 32px;
     padding: 0 0 32px;
   }
@@ -11,7 +11,7 @@
     margin: 0 16px;
     padding: 16px 0 0;
     border-radius: 2px;
-    @media only screen and (min-width: 950px) {
+    @media only screen and (min-width: 1024px) {
       margin: 16px auto 0;
       max-width: calc(75vw - 32px);
     }

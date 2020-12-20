@@ -124,28 +124,32 @@ export default function Splash({ slides }) {
     enableScroll();
   };
 
-  const style =
-    pos !== null ? { transform: `translate3d(${pos}px,0,0)` } : null;
+  const prevSlideOnClick = () => current > -1 && prevSlide();
   const prev = (
     <button
       type="button"
-      onClick={prevSlide}
+      onClick={prevSlideOnClick}
       className={`${styles.splash__nav} ${styles['splash__nav--prev']}${
         current > -1 ? '' : ` ${styles['splash__nav--ghost']}`
       }`}
       aria-label="prev"
     />
   );
+  const nextSlideOnClick = () => current + 1 < slides.length - 1 && nextSlide();
   const next = (
     <button
       type="button"
-      onClick={nextSlide}
+      onClick={nextSlideOnClick}
       className={`${styles.splash__nav} ${styles['splash__nav--next']}${
         current < 1 ? '' : ` ${styles['splash__nav--ghost']}`
       }`}
       aria-label="next"
     />
   );
+
+  const style =
+    pos !== null ? { transform: `translate3d(${pos}px,0,0)` } : null;
+
   return (
     <div className={styles.splash}>
       <div
