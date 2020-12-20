@@ -38,11 +38,66 @@ export default function Home() {
       <div className="glob_content">
         <Splash slides={slides} />
         <div className={styles.list}>
-          <div className={styles.list__card}>ya</div>
-          <div className={styles.list__card}>ya</div>
-          <div className={styles.list__card}>ya</div>
-          <div className={styles.list__card}>ya</div>
-          <div className={styles.list__card}>ya</div>
+          <div className={styles.list__card}>
+            <div className={styles.list__card__cnt} />
+            <div className={styles.list__card__holes}>
+              <div
+                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--left']}`}
+              />
+              <div
+                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--right']}`}
+              />
+            </div>
+            <div className={styles.list__card__foot} />
+          </div>
+          <div className={styles.list__card}>
+            <div className={styles.list__card__cnt} />
+            <div className={styles.list__card__holes}>
+              <div
+                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--left']}`}
+              />
+              <div
+                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--right']}`}
+              />
+            </div>
+            <div className={styles.list__card__foot} />
+          </div>
+          <div className={styles.list__card}>
+            <div className={styles.list__card__cnt} />
+            <div className={styles.list__card__holes}>
+              <div
+                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--left']}`}
+              />
+              <div
+                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--right']}`}
+              />
+            </div>
+            <div className={styles.list__card__foot} />
+          </div>
+          <div className={styles.list__card}>
+            <div className={styles.list__card__cnt} />
+            <div className={styles.list__card__holes}>
+              <div
+                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--left']}`}
+              />
+              <div
+                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--right']}`}
+              />
+            </div>
+            <div className={styles.list__card__foot} />
+          </div>
+          <div className={styles.list__card}>
+            <div className={styles.list__card__cnt} />
+            <div className={styles.list__card__holes}>
+              <div
+                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--left']}`}
+              />
+              <div
+                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--right']}`}
+              />
+            </div>
+            <div className={styles.list__card__foot} />
+          </div>
         </div>
       </div>
       <Footer />

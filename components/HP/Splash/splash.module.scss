@@ -9,8 +9,9 @@
   overflow: hidden;
 
   @media only screen and (min-width: 950px) {
-    background: #fff;
+    margin-bottom: 32px;
     height: 45vh;
+    background: #fff;
   }
   @media only screen and (min-width: 1240px) {
     height: 55vh;
