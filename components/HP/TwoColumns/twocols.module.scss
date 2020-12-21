@@ -1,0 +1,42 @@
+.wrap {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  width: 100vw;
+  background: #f6f5f3;
+  @media only screen and (min-width: 1024px) {
+    padding: 0;
+  }
+
+  &__cols {
+    display: flex;
+    flex-direction: column;
+    @media only screen and (min-width: 1024px) {
+      flex-direction: row;
+      margin: 0 auto;
+      max-width: calc(75vw - 32px);
+    }
+    &__col1 {
+      order: 2;
+      @media only screen and (min-width: 1024px) {
+        order: 1;
+        padding: 0 16px 32px;
+        min-width: 300px;
+        background: #e7e8e9;
+      }
+      @media only screen and (min-width: 1366px) {
+        min-width: 360px;
+      }
+      @media only screen and (min-width: 1366px) {
+        min-width: 400px;
+      }
+    }
+    &__col2 {
+      order: 1;
+      @media only screen and (min-width: 1024px) {
+        order: 2;
+        margin-left: 16px;
+        flex: 1 0 0;
+      }
+    }
+  }
+}

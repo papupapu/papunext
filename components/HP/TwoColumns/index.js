@@ -1,0 +1,25 @@
+import React from 'react';
+
+import Ticket from '../../Cards/Ticket';
+
+import styles from './twocols.module.scss';
+
+function TwoColumns() {
+  return (
+    <div className={styles.wrap}>
+      <div className={styles.wrap__cols}>
+        <div className={styles.wrap__cols__col1}>
+          <Ticket />
+          <Ticket />
+          <Ticket />
+        </div>
+        <div className={styles.wrap__cols__col2}>
+          <Ticket />
+          <Ticket />
+          <Ticket />
+        </div>
+      </div>
+    </div>
+  );
+}
+export default TwoColumns;

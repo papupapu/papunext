@@ -5,8 +5,7 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Splash from '../components/HP/Splash';
-
-import styles from '../styles/Home.module.scss';
+import TwoColumns from '../components/HP/TwoColumns';
 
 function contents(cat, secondSlot = null) {
   const add = !secondSlot ? 0 : 3;
@@ -37,68 +36,7 @@ export default function Home() {
       <Header />
       <div className="glob_content">
         <Splash slides={slides} />
-        <div className={styles.list}>
-          <div className={styles.list__card}>
-            <div className={styles.list__card__cnt} />
-            <div className={styles.list__card__holes}>
-              <div
-                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--left']}`}
-              />
-              <div
-                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--right']}`}
-              />
-            </div>
-            <div className={styles.list__card__foot} />
-          </div>
-          <div className={styles.list__card}>
-            <div className={styles.list__card__cnt} />
-            <div className={styles.list__card__holes}>
-              <div
-                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--left']}`}
-              />
-              <div
-                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--right']}`}
-              />
-            </div>
-            <div className={styles.list__card__foot} />
-          </div>
-          <div className={styles.list__card}>
-            <div className={styles.list__card__cnt} />
-            <div className={styles.list__card__holes}>
-              <div
-                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--left']}`}
-              />
-              <div
-                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--right']}`}
-              />
-            </div>
-            <div className={styles.list__card__foot} />
-          </div>
-          <div className={styles.list__card}>
-            <div className={styles.list__card__cnt} />
-            <div className={styles.list__card__holes}>
-              <div
-                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--left']}`}
-              />
-              <div
-                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--right']}`}
-              />
-            </div>
-            <div className={styles.list__card__foot} />
-          </div>
-          <div className={styles.list__card}>
-            <div className={styles.list__card__cnt} />
-            <div className={styles.list__card__holes}>
-              <div
-                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--left']}`}
-              />
-              <div
-                className={`${styles['list__card__holes--hole']} ${styles['list__card__holes--right']}`}
-              />
-            </div>
-            <div className={styles.list__card__foot} />
-          </div>
-        </div>
+        <TwoColumns />
       </div>
       <Footer />
     </div>
