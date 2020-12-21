@@ -9,11 +9,17 @@ function TwoColumns() {
     <div className={styles.wrap}>
       <div className={styles.wrap__cols}>
         <div className={styles.wrap__cols__col1}>
+          <h2 className={styles['wrap__cols--tit']}>
+            High altitude: le ultime notizie
+          </h2>
           <Ticket />
           <Ticket />
           <Ticket />
         </div>
         <div className={styles.wrap__cols__col2}>
+          <h2 className={styles['wrap__cols--tit']}>
+            Everest: 100 anni di esplorazioni
+          </h2>
           <Ticket />
           <Ticket />
           <Ticket />
