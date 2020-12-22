@@ -1,6 +1,35 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './tk.module.scss';
+
+const CardHoles = () => (
+  <div className={styles.card__holes}>
+    <div
+      className={`${styles['card__holes--hole']} ${styles['card__holes--left']}`}
+    />
+    <div
+      className={`${styles['card__holes--hole']} ${styles['card__holes--right']}`}
+    />
+  </div>
+);
+
+const CardContent = ({ className, children }) => (
+  <div className={`${styles.card__cnt} ${className}`}>{children}</div>
+);
+CardContent.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.object,
+    PropTypes.string,
+    PropTypes.node,
+  ]),
+};
+CardContent.defaultProps = {
+  className: null,
+  children: null,
+};
 
 function Ticket() {
   const t = `Tamara Lunger atterrata a Islamabad e pronta per il K2`;
@@ -8,22 +37,13 @@ function Ticket() {
   const d = `Un'articolo di Ciccio pasticcio articolo di Ciccio pasticcio articolo di Ciccio pasticcio articolo di Ciccio pasticcio articolo di Ciccio pasticcio`;
   return (
     <div className={styles.card}>
-      <div className={styles.card__cnt}>
+      <CardContent className="tp-a--c">
         <h1>{t}</h1>
         <p>{p}</p>
         <div />
-      </div>
-      <div className={styles.card__holes}>
-        <div
-          className={`${styles['card__holes--hole']} ${styles['card__holes--left']}`}
-        />
-        <div
-          className={`${styles['card__holes--hole']} ${styles['card__holes--right']}`}
-        />
-      </div>
-      <div className={styles.card__foot} style={{ textAlign: 'left' }}>
-        {d}
-      </div>
+      </CardContent>
+      <CardHoles />
+      <CardContent>{d}</CardContent>
     </div>
   );
 }

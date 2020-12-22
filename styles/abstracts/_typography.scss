@@ -1,0 +1,26 @@
+// Typography
+$tp-size-xxs: 12px;
+$tp-size-xs: 13px;
+$tp-size-s: 14px;
+$tp-size-m: 16px;
+$tp-size-l: 18px;
+$tp-size-xl: 28px;
+$tp-size-xxl: 32px;
+
+$tp-sizes: (
+  xxs: $tp-size-xxs,
+  xs: $tp-size-xs,
+  s: $tp-size-s,
+  m: $tp-size-m,
+  l: $tp-size-l,
+  xl: $tp-size-xl,
+  x2l: $tp-size-xxl,
+);
+
+$tp-align: (left, center, right);
+
+$tp-font-weight: (
+  s: 300,
+  m: 500,
+  l: 700,
+);
