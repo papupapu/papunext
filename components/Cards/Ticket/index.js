@@ -41,12 +41,12 @@ function Ticket() {
   return (
     <div className={styles.card}>
       <CardContent className="tp-a--c">
-        <h1>{t}</h1>
-        <p>{p}</p>
+        <h1 className="tp-s--xl tp-w--m">{t}</h1>
+        <p className="tp-s--xs">{p}</p>
         <div />
       </CardContent>
       <CardHoles />
-      <CardContent>{d}</CardContent>
+      <CardContent className="tp-w--s">{d}</CardContent>
     </div>
   );
 }
