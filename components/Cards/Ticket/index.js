@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import makeClassName from '../../../utils/makeClassName';
+
 import styles from './tk.module.scss';
 
 const CardHoles = () => (
@@ -14,9 +16,10 @@ const CardHoles = () => (
   </div>
 );
 
-const CardContent = ({ className, children }) => (
-  <div className={`${styles.card__cnt} ${className}`}>{children}</div>
-);
+const CardContent = ({ className, children }) => {
+  const cls = makeClassName([styles.card__cnt, className]);
+  return <div className={cls}>{children}</div>;
+};
 CardContent.propTypes = {
   className: PropTypes.string,
   children: PropTypes.oneOfType([
