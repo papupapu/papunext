@@ -1,0 +1,19 @@
+$color--primary: #f6f5f3;
+$color--secondary: #e7e8e9;
+
+$color--font1: #39434e;
+$color--font2: #697684;
+
+$color--white: #fff;
+
+$blockColors: (
+  p: $color--primary,
+  s: $color--secondary,
+  w: $color--white,
+);
+
+$fontColors: (
+  f1: $color--font1,
+  f2: $color--font2,
+  w: $color--white,
+);

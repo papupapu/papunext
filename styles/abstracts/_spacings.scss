@@ -1,0 +1,12 @@
+// Spacings
+$spacing-s: 8px;
+$spacing-m: $spacing-s * 2; // 16px
+$spacing-l: $spacing-m * 2; // 32px
+
+$spacings: (
+  s: $spacing-s,
+  m: $spacing-m,
+  l: $spacing-l,
+);
+
+$spacing-position: (top, right, bottom, left);

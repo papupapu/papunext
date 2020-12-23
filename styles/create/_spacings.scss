@@ -1,0 +1,13 @@
+@each $key, $value in $spacings {
+  @each $pfx, $prop in (m: margin, p: padding) {
+    .#{$pfx}--#{$key} {
+      #{$prop}: $value !important;
+    }
+
+    @each $pos in $spacing-position {
+      .#{$pfx}#{str-slice($pos, 1, 1)}--#{$key} {
+        #{$prop}-#{$pos}: $value !important;
+      }
+    }
+  }
+}

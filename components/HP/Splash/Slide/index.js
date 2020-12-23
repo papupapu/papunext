@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import makeClassName from '../../../../utils/makeClassName';
+
 import styles from '../splash.module.scss';
 
 const imgBase =
@@ -8,6 +10,21 @@ const imgBase =
 
 export default function Slide({ className, contents }) {
   const { title, description, img } = contents;
+  const tCls = makeClassName([
+    styles.splash__triplet__tit,
+    'pr--m',
+    'pb--m',
+    'pl--m',
+    'c-txt--w',
+  ]);
+  const dCls = makeClassName([
+    styles.splash__triplet__desc,
+    'pr--m',
+    'pb--m',
+    'pl--m',
+    'tp-s--m',
+    'c-txt--w',
+  ]);
   return (
     <div className={className}>
       <picture className={styles.splash__triplet__pic}>
@@ -41,8 +58,8 @@ export default function Slide({ className, contents }) {
           loading="lazy"
         />
       </picture>
-      <h1 className={styles.splash__triplet__tit}>{title}</h1>
-      <p className={styles.splash__triplet__desc}>{description}</p>
+      <h1 className={tCls}>{title}</h1>
+      <p className={dCls}>{description}</p>
     </div>
   );
 }

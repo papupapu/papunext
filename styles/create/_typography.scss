@@ -1,0 +1,17 @@
+@each $key, $value in $tp-sizes {
+  .tp-s--#{$key} {
+    font-size: $value;
+  }
+}
+
+@each $value in $tp-align {
+  .tp-a--#{str-slice($value, 1, 1)} {
+    text-align: $value;
+  }
+}
+
+@each $key, $value in $tp-font-weight {
+  .tp-w--#{$key} {
+    font-weight: $value;
+  }
+}
