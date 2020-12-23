@@ -1,4 +1,27 @@
 .header {
+  display: flex;
+  margin: 0 auto;
+  width: calc(75vw - 32px);
   min-height: 64px;
-  width: 100vw;
+  &__logo {
+    margin-top: 16px;
+    height: 32px;
+    line-height: 32px;
+  }
+  &__nav {
+    display: flex;
+    margin-left: auto;
+    a {
+      display: block;
+      margin: 16px 0 0 16px;
+      padding: 0 8px;
+      height: 32px;
+      line-height: 30px;
+      border: 1px solid;
+      border-radius: 15px;
+      &:hover {
+        color: #000 !important;
+      }
+    }
+  }
 }
