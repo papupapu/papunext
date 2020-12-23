@@ -9,7 +9,7 @@ function TwoColumns() {
     <div className={`${styles.wrap} mb--m`}>
       <div className={styles.wrap__cols}>
         <div className={styles.wrap__cols__col1}>
-          <h2 className={styles['wrap__cols--tit']}>
+          <h2 className={`${styles['wrap__cols--tit']} tp-s--xs`}>
             High altitude: le ultime notizie
           </h2>
           <Ticket />
@@ -17,7 +17,7 @@ function TwoColumns() {
           <Ticket />
         </div>
         <div className={styles.wrap__cols__col2}>
-          <h2 className={styles['wrap__cols--tit']}>
+          <h2 className={`${styles['wrap__cols--tit']} tp-s--xs`}>
             Everest: 100 anni di esplorazioni
           </h2>
           <Ticket />
