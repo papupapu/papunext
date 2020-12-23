@@ -40,13 +40,13 @@ function Ticket() {
   const d = `Un'articolo di Ciccio pasticcio articolo di Ciccio pasticcio articolo di Ciccio pasticcio articolo di Ciccio pasticcio articolo di Ciccio pasticcio`;
   return (
     <div className={styles.card}>
-      <CardContent className="tp-a--c">
+      <CardContent className="tp-a--c pr--m pl--m">
         <h1 className="tp-s--xl tp-w--m">{t}</h1>
-        <p className="tp-s--xs">{p}</p>
+        <p className="tp-s--xs pt--m pb--m">{p}</p>
         <div />
       </CardContent>
       <CardHoles />
-      <CardContent className="tp-w--s">{d}</CardContent>
+      <CardContent className="tp-w--s pr--m pl--m">{d}</CardContent>
     </div>
   );
 }

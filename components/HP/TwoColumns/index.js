@@ -6,7 +6,7 @@ import styles from './twocols.module.scss';
 
 function TwoColumns() {
   return (
-    <div className={styles.wrap}>
+    <div className={`${styles.wrap} mb--m`}>
       <div className={styles.wrap__cols}>
         <div className={styles.wrap__cols__col1}>
           <h2 className={styles['wrap__cols--tit']}>
