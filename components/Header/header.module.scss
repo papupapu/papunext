@@ -1,26 +1,32 @@
 .header {
   display: flex;
   margin: 0 auto;
-  width: calc(75vw - 32px);
+  width: 100%;
   min-height: 64px;
+  @media only screen and (min-width: 1024px) {
+    width: 75vw;
+  }
   &__logo {
     margin-top: 16px;
     height: 32px;
     line-height: 32px;
   }
   &__nav {
-    display: flex;
-    margin-left: auto;
-    a {
-      display: block;
-      margin: 16px 0 0 16px;
-      padding: 0 8px;
-      height: 32px;
-      line-height: 30px;
-      border: 1px solid;
-      border-radius: 15px;
-      &:hover {
-        color: #000 !important;
+    display: none;
+    @media only screen and (min-width: 768px) {
+      display: flex;
+      margin-left: auto;
+      a {
+        display: block;
+        margin: 16px 0 0 16px;
+        padding: 0 8px;
+        height: 32px;
+        line-height: 30px;
+        border: 1px solid;
+        border-radius: 15px;
+        &:hover {
+          color: #000 !important;
+        }
       }
     }
   }

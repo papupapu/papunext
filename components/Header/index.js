@@ -4,7 +4,7 @@ import styles from './header.module.scss';
 
 export default function Header() {
   return (
-    <div className={`${styles.header} c-bg--w`}>
+    <div className={`${styles.header} pl--m pr--m c-bg--w`}>
       <div className={styles.header__logo}>Logo</div>
       <div className={styles.header__nav}>
         <a href="/" title="Primo link" className="c-txt--f2">
