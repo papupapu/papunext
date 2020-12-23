@@ -15,6 +15,7 @@ export default function Slide({ className, contents }) {
     'pr--m',
     'pb--m',
     'pl--m',
+    'c-txt--w',
   ]);
   const dCls = makeClassName([
     styles.splash__triplet__desc,
@@ -22,6 +23,7 @@ export default function Slide({ className, contents }) {
     'pb--m',
     'pl--m',
     'tp-s--m',
+    'c-txt--w',
   ]);
   return (
     <div className={className}>

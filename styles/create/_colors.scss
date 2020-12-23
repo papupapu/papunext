@@ -1,0 +1,15 @@
+@each $name, $value in $fontColors {
+  .c-txt--#{$name} {
+    color: $value !important;
+  }
+}
+
+@each $name, $value in $blockColors {
+  .c-bg--#{$name} {
+    background-color: $value !important;
+  }
+
+  .c-br--#{$name} {
+    border-color: $value !important;
+  }
+}
