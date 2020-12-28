@@ -1,16 +1,19 @@
 .header {
-  display: flex;
-  margin: 0 auto;
   width: 100%;
-  min-height: 64px;
-  @include breakpoint-m {
-    width: 90vw;
-  }
-  @include breakpoint-l {
-    width: 80vw;
-  }
-  @include breakpoint-xl {
-    width: 75vw;
+  &__wrap {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 64px;
+    @include breakpoint-m {
+      width: 90vw;
+    }
+    @include breakpoint-l {
+      width: 80vw;
+    }
+    @include breakpoint-xl {
+      width: 75vw;
+    }
   }
   &__logo {
     margin-top: 16px;
