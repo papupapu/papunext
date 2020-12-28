@@ -13,7 +13,7 @@
     background: #fff;
   }
   @include breakpoint-l {
-    height: 55vh;
+    height: 50vh;
   }
   @include breakpoint-xl {
     height: 60vh;
@@ -38,9 +38,15 @@
     }
     @include breakpoint-m {
       justify-content: flex-start;
-      width: calc(225vw + 96px);
+      width: calc(270vw + 96px);
       transform: translate(0px, 0px);
       transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    @include breakpoint-l {
+      width: calc(240vw + 96px);
+    }
+    @include breakpoint-xl {
+      width: calc(225vw + 96px);
     }
   }
 
@@ -65,13 +71,15 @@
       grid-row-gap: 16px;
 
       padding: 0 16px;
-      width: 75vw;
+      width: 90vw;
       height: 100%;
     }
-    @include breakpoint-xl {
+    @include breakpoint-l {
+      width: 80vw;
       grid-template-columns: auto 360px;
     }
     @include breakpoint-xl {
+      width: 75vw;
       grid-template-columns: auto 400px;
     }
 

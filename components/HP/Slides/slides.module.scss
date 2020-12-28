@@ -3,6 +3,12 @@
   overflow: scroll;
   scroll-snap-type: x mandatory;
   @include breakpoint-m {
+    max-width: calc(90vw - 32px);
+  }
+  @include breakpoint-l {
+    max-width: calc(80vw - 32px);
+  }
+  @include breakpoint-xl {
     max-width: calc(75vw - 32px);
   }
   &__cont {

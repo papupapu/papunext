@@ -11,8 +11,14 @@
     @include breakpoint-s {
       flex-direction: row;
     }
-    @include breakpoint-xl {
+    @include breakpoint-m {
       margin: 0 auto;
+      max-width: calc(90vw - 32px);
+    }
+    @include breakpoint-l {
+      max-width: calc(80vw - 32px);
+    }
+    @include breakpoint-xl {
       max-width: calc(75vw - 32px);
     }
     &--tit {
@@ -30,7 +36,7 @@
         max-width: 300px;
         background: #e7e8e9;
       }
-      @include breakpoint-xl {
+      @include breakpoint-l {
         max-width: 360px;
       }
       @include breakpoint-xl {
