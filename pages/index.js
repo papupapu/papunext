@@ -8,7 +8,7 @@ import Splash from '../components/HP/Splash';
 import TwoColumns from '../components/HP/TwoColumns';
 import Slides from '../components/HP/Slides';
 
-function contents(cat, secondSlot = null) {
+function topSliderContents(cat, secondSlot = null) {
   const add = !secondSlot ? 0 : 3;
   return [...Array(3).keys()].map((i, x) => ({
     title:
@@ -20,9 +20,9 @@ function contents(cat, secondSlot = null) {
 }
 
 const slides = [
-  { s: contents('s') },
-  { t: contents('t') },
-  { s: contents('s', 1) },
+  { s: topSliderContents('s') },
+  { t: topSliderContents('t') },
+  { s: topSliderContents('s', 1) },
 ];
 
 export default function Home() {

@@ -1,0 +1,63 @@
+$b-s: 768px; // Small - Tablet
+$b-m: 1024px; // Medium - Desktop
+$b-l: 1240px; // Large
+$b-xl: 1680px; // x Large
+
+$breakpoints: (
+  s: $b-s,
+  m: $b-m,
+  l: $b-l,
+  xl: $b-xl,
+);
+
+$br-s: (
+  min: $b-s,
+);
+$br-m: (
+  min: $b-m,
+);
+$br-l: (
+  min: $b-l,
+);
+$br-xl: (
+  min: $b-xl,
+);
+
+@mixin breakpoint($map) {
+  $query: '';
+
+  @if map-has-key($map, min) {
+    $query: append($query, '(min-width: #{map-get($map, min)})');
+  }
+  @if map-has-key($map, min) and map-has-key($map, max) {
+    $query: append($query, 'and');
+  }
+  @if map-has-key($map, max) {
+    $query: append($query, '(max-width: #{map-get($map, max)})');
+  }
+
+  @media #{$query} {
+    @content;
+  }
+}
+
+@mixin breakpoint-s() {
+  @include breakpoint($br-s) {
+    @content;
+  }
+}
+@mixin breakpoint-m() {
+  @include breakpoint($br-m) {
+    @content;
+  }
+}
+@mixin breakpoint-l() {
+  @include breakpoint($br-l) {
+    @content;
+  }
+}
+@mixin breakpoint-xl() {
+  @include breakpoint($br-xl) {
+    @content;
+  }
+}
