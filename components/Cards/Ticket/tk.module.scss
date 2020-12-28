@@ -1,9 +1,9 @@
 .card {
   margin: 0 16px;
-  @media only screen and (min-width: 768px) {
+  @include breakpoint-s {
     margin: 0;
   }
-  @media only screen and (min-width: 1024px) {
+  @include breakpoint-m {
     margin: 16px auto 0;
     max-width: calc(75vw - 32px);
   }

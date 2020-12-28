@@ -2,21 +2,21 @@
   width: calc(100vw - 32px);
   overflow: scroll;
   scroll-snap-type: x mandatory;
-  @media only screen and (min-width: 1024px) {
+  @include breakpoint-m {
     max-width: calc(75vw - 32px);
   }
   &__cont {
     display: flex;
     justify-content: space-between;
     width: 500vw;
-    @media only screen and (min-width: 768px) {
+    @include breakpoint-s {
       width: 100%;
     }
     & div {
       width: calc(100vw - 16px);
       height: 250px;
       scroll-snap-align: start;
-      @media only screen and (min-width: 768px) {
+      @include breakpoint-s {
         flex: 1 0 auto;
         max-width: calc(25% - 16px);
       }

@@ -1,0 +1,17 @@
+introduce 1240 bp in towcols / slider - readability assured on all devices
+introduce bp mixins - bp rationalization
+introduce seofooter - seo/design
+style header - don't fuck around/seo
+style footer - don't fuck around/seo
+style slider - don't fuck around/seo
+inverted cols - design
+--
+cards img ratio via css - performances
+slider scroll-snap? - performances
+slider responsive - don't fuck around
+--
+wp json api test - don't fuck around
+icons - design/performances
+enhanched top slider - add titles seo/design
+--
+how the fuck do you tag an hp?
