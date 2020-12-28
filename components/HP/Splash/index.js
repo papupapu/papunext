@@ -5,6 +5,12 @@ import Triplet from './Triplet';
 
 import styles from './splash.module.scss';
 
+const vpMap = {
+  1024: 90,
+  1280: 80,
+  1680: 75,
+};
+
 const disableScroll = () => {
   if (window) {
     document.body.classList.add('noscroll');
@@ -32,14 +38,22 @@ export default function Splash({ slides }) {
     const _vw = document.documentElement.clientWidth;
     const _isDesktop = _vw >= 1024;
 
-    let initialPos = 0;
-    let initialCurrent = 0;
-    let span = (_vw / 100) * 75;
+    let initialPos = _vw * 3 * -1;
+    let initialCurrent = 3;
+    let span = _vw;
 
-    if (!_isDesktop) {
-      initialPos = _vw * 3 * -1;
-      initialCurrent = 3;
-      span = _vw;
+    if (_isDesktop) {
+      initialPos = 0;
+      initialCurrent = 0;
+      let mq = 0;
+      if (_vw < 1280) {
+        mq = 1024;
+      } else if (_vw < 1680) {
+        mq = 1280;
+      } else {
+        mq = 1680;
+      }
+      span = (_vw / 100) * vpMap[mq];
     }
     setPos(initialPos);
     setCurrent(initialCurrent);

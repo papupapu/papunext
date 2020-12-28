@@ -2,21 +2,20 @@
   position: relative;
   display: flex;
   justify-content: center;
-  margin-bottom: 16px;
   width: 100vw;
   height: 70vh;
   background: #394367;
   overflow: hidden;
   @include breakpoint-m {
-    margin-bottom: 32px;
-    height: 45vh;
+    margin: 32px 0;
+    height: 420px; // 45vh
     background: #fff;
   }
   @include breakpoint-l {
-    height: 50vh;
+    height: 470px; // 50vh
   }
   @include breakpoint-xl {
-    height: 60vh;
+    height: 565px; // 65vh;
   }
 
   &__slider {
@@ -120,12 +119,13 @@
         grid-column-start: 2;
         & h1 {
           padding-top: 7px;
-          font-size: 24px;
+          font-size: 22px;
           text-shadow: 1px 1px #000;
         }
         & p {
           padding-bottom: 0 !important;
           height: 0;
+          font-size: 14px;
           overflow: hidden;
           transition: height 0.75s cubic-bezier(0.23, 1, 0.32, 1),
             padding 0.75s cubic-bezier(0.23, 1, 0.32, 1);
@@ -189,7 +189,13 @@
       display: block;
       position: absolute;
       top: 0;
-      width: calc(12.5vw - 16px);
+      width: calc(5vw - 16px);
+      @include breakpoint-l {
+        width: calc(10vw - 16px);
+      }
+      @include breakpoint-xl {
+        width: calc(12.5vw - 16px);
+      }
       height: 100%;
       z-index: 1;
       &:after {
@@ -201,7 +207,9 @@
         line-height: 60px;
         text-align: center;
         background: #fff;
-        border-radius: 50%;
+        @include breakpoint-l {
+          border-radius: 50% !important;
+        }
       }
       &:hover {
         &:after {
@@ -212,16 +220,28 @@
       &--prev {
         left: 0;
         &:after {
-          content: 'prev';
-          left: 16px;
+          content: '';
+          left: -30px;
+          border-radius: 0 50% 50% 0;
+          @include breakpoint-l {
+            content: 'prev';
+            margin-left: -30px;
+            left: 50%;
+          }
         }
       }
 
       &--next {
         right: 0;
         &:after {
-          content: 'next';
-          right: 16px;
+          content: '';
+          right: -30px;
+          border-radius: 50% 0 0 50%;
+          @include breakpoint-l {
+            content: 'next';
+            margin-right: -30px;
+            right: 50%;
+          }
         }
       }
 
