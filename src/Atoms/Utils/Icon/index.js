@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import icons from './icons';
 
-import makeClassName from '../../../utils/makeClassName';
+import makeClassName from '../../../../utils/makeClassName';
 
 import styles from './icon.module.scss';
 

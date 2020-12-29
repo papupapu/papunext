@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import WatchScroll from '../../../Utils/WatchScroll';
 
-import makeClassName from '../../../../utils/makeClassName';
+import makeClassName from '../../../../../utils/makeClassName';
 
 import styles from './tk.module.scss';
 
