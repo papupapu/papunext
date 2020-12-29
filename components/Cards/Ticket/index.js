@@ -53,55 +53,64 @@ function Ticket({ title, author, desc, img, imgRatio }) {
     'c-bg--p',
     imgRatio === '16:9' && styles['card__cnt--pic--r16-9'],
   ]);
+
+  const mqImgMap = {
+    'r4-3': {
+      1680: 'w_336',
+      1280: 'w_296',
+      768: 'w_236',
+    },
+    'r16-9': {
+      1680: 'w_780',
+      1280: 'w_584',
+      1024: 'w_542',
+      768: 'w_404',
+    },
+  };
+
+  const picture = () => {
+    const mapping = imgRatio === '16:9' ? mqImgMap['r16-9'] : mqImgMap['r4-3'];
+    const sources = Object.keys(mapping)
+      .reverse()
+      .map((mq) => (
+        <>
+          <source
+            type="image/webp"
+            media={`(min-width:${mq}px)`}
+            srcSet={`${imgBase}${mapping[mq]}${imgFolder}webp/${img}.webp`}
+          />
+          <source
+            type="image/jpeg"
+            media={`(min-width:${mq}px)`}
+            srcSet={`${imgBase}${mapping[mq]}${imgFolder}jpg/${img}.jpg`}
+          />
+        </>
+      ));
+    return (
+      <picture className={imgCls}>
+        {sources}
+        <source
+          type="image/webp"
+          srcSet={`${imgBase}w_350${imgFolder}webp/${img}.webp`}
+        />
+        <img
+          className={styles['card__cnt--img']}
+          src={`${imgBase}w_350${imgFolder}jpg/${img}.jpg`}
+          width="350"
+          height="262"
+          alt={title}
+          loading="lazy"
+        />
+      </picture>
+    );
+  };
+
   return (
     <div className={`${styles.card} pt--m`}>
       <CardContent className="tp-a--c pr--m pl--m">
         <h1 className="tp-s--xl tp-w--m c-txt--f1">{title}</h1>
         <p className="tp-s--xs pt--m pb--m c-txt--f2">{`Un'articolo di ${author}`}</p>
-        <picture className={imgCls}>
-          <source
-            type="image/webp"
-            media="(min-width:1680px)"
-            srcSet={`${imgBase}w_336${imgFolder}webp/${img}.webp`}
-          />
-          <source
-            type="image/jpeg"
-            media="(min-width:1680px)"
-            srcSet={`${imgBase}w_336${imgFolder}jpg/${img}.jpg`}
-          />
-          <source
-            type="image/webp"
-            media="(min-width:1280px)"
-            srcSet={`${imgBase}w_296${imgFolder}webp/${img}.webp`}
-          />
-          <source
-            type="image/jpeg"
-            media="(min-width:1280px)"
-            srcSet={`${imgBase}w_296${imgFolder}jpg/${img}.jpg`}
-          />
-          <source
-            type="image/webp"
-            media="(min-width:768px)"
-            srcSet={`${imgBase}w_236${imgFolder}webp/${img}.webp`}
-          />
-          <source
-            type="image/jpeg"
-            media="(min-width:768px)"
-            srcSet={`${imgBase}w_236${imgFolder}jpg/${img}.jpg`}
-          />
-          <source
-            type="image/webp"
-            srcSet={`${imgBase}w_350${imgFolder}webp/${img}.webp`}
-          />
-          <img
-            className={styles['card__cnt--img']}
-            src={`${imgBase}w_350${imgFolder}jpg/${img}.jpg`}
-            width="350"
-            height="262"
-            alt={title}
-            loading="lazy"
-          />
-        </picture>
+        {picture()}
       </CardContent>
       <CardHoles />
       <CardContent tag="p" className={pCls}>

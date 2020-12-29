@@ -1,5 +1,4 @@
 style header - don't fuck around/seo
-second part img ratio via css - design
 --
 introduce seofooter - seo/design
 style footer - don't fuck around/seo
