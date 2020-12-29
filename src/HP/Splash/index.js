@@ -24,7 +24,6 @@ const enableScroll = () => {
 };
 
 export default function Splash({ slides }) {
-  console.log('Splash slides', slides);
   const slider = useRef(null);
   const [vw, setVW] = useState(null);
   const [pos, setPos] = useState(null);
