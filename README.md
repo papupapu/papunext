@@ -2,6 +2,14 @@
 
 #### 29/12/2020
 
+Commit **d7d4dae** "WatchScroll" component for JS img lazyload.
+
+On mobile this caused a performance increase: all metrics are back to previous values
+
+ToDo: change WatchScroll implementation for performances (move it to wrap picture)
+
+#### 29/12/2020
+
 Commit **c4218b6** introduced images in the "below the fold" part of the page.
 
 Even if the attribute _loading="lazy"_ is used on all images, the browser is still loading 3 images that are not in the top area, while it works fine for the top slider.
