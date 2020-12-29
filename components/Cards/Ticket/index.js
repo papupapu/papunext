@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import WatchScroll from '../../WatchScroll';
+
 import makeClassName from '../../../utils/makeClassName';
 
 import styles from './tk.module.scss';
@@ -40,13 +42,18 @@ CardContent.defaultProps = {
 const imgBase = 'https://res.cloudinary.com/dia4050i1/image/upload/';
 const imgFolder = '/v1607806886/next/des/';
 
-function Ticket({ title, author, desc, img, imgRatio, scrollInfos }) {
+const Picture = ({
+  className,
+  mqMap,
+  title,
+  img,
+  toLoad,
+  scrollInfos,
+  loaded,
+}) => {
   const domEl = useRef(null);
-
-  const [lazy, setLazy] = useState(true);
-
   useEffect(() => {
-    if (lazy && scrollInfos.coords !== null) {
+    if (toLoad && scrollInfos.coords !== null) {
       const _vh = document.documentElement.clientHeight;
       const el = domEl.current;
       const offsetTop = el.offsetTop + el.parentNode.offsetTop;
@@ -54,11 +61,71 @@ function Ticket({ title, author, desc, img, imgRatio, scrollInfos }) {
       const bot = offsetTop + el.offsetHeight - scrollInfos.coords <= _vh;
 
       if (top || bot) {
-        setLazy(false);
+        loaded(false);
       }
     }
-  }, [scrollInfos.coords, lazy]);
+  }, [scrollInfos.coords, toLoad]);
 
+  if (!toLoad) {
+    const sources = Object.keys(mqMap)
+      .reverse()
+      .map((mq) => (
+        <>
+          <source
+            type="image/webp"
+            media={`(min-width:${mq}px)`}
+            srcSet={`${imgBase}${mqMap[mq]}${imgFolder}webp/${img}.webp`}
+          />
+          <source
+            type="image/jpeg"
+            media={`(min-width:${mq}px)`}
+            srcSet={`${imgBase}${mqMap[mq]}${imgFolder}jpg/${img}.jpg`}
+          />
+        </>
+      ));
+
+    return (
+      <picture className={className}>
+        {sources}
+        <source
+          type="image/webp"
+          srcSet={`${imgBase}w_350${imgFolder}webp/${img}.webp`}
+        />
+        <img
+          className={styles['card__cnt--img']}
+          src={`${imgBase}w_350${imgFolder}jpg/${img}.jpg`}
+          width="350"
+          height="262"
+          alt={title}
+          loading="lazy"
+        />
+      </picture>
+    );
+  }
+  return <picture ref={domEl} className={className} />;
+};
+Picture.propTypes = {
+  className: PropTypes.string,
+  mqMap: PropTypes.instanceOf(Object),
+  title: PropTypes.string,
+  img: PropTypes.string,
+  toLoad: PropTypes.bool,
+  scrollInfos: PropTypes.instanceOf(Object),
+  loaded: PropTypes.func,
+};
+Picture.defaultProps = {
+  className: null,
+  mqMap: {},
+  title: null,
+  img: null,
+  toLoad: true,
+  scrollInfos: { coords: null, dir: '' },
+  loaded: () => {},
+};
+
+function Ticket({ title, author, desc, img, imgRatio }) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const updateIsLoaded = () => setIsLoaded(true);
   const pCls = makeClassName([
     styles['card__cnt--p'],
     'tp-w--s',
@@ -66,6 +133,7 @@ function Ticket({ title, author, desc, img, imgRatio, scrollInfos }) {
     'pl--m',
     'c-txt--f1',
   ]);
+
   const imgCls = makeClassName([
     styles['card__cnt--pic'],
     'c-bg--p',
@@ -86,53 +154,24 @@ function Ticket({ title, author, desc, img, imgRatio, scrollInfos }) {
     },
   };
 
-  const picture = () => {
-    if (!lazy) {
-      const mapping =
-        imgRatio === '16:9' ? mqImgMap['r16-9'] : mqImgMap['r4-3'];
-      const sources = Object.keys(mapping)
-        .reverse()
-        .map((mq) => (
-          <>
-            <source
-              type="image/webp"
-              media={`(min-width:${mq}px)`}
-              srcSet={`${imgBase}${mapping[mq]}${imgFolder}webp/${img}.webp`}
-            />
-            <source
-              type="image/jpeg"
-              media={`(min-width:${mq}px)`}
-              srcSet={`${imgBase}${mapping[mq]}${imgFolder}jpg/${img}.jpg`}
-            />
-          </>
-        ));
-      return (
-        <picture className={imgCls}>
-          {sources}
-          <source
-            type="image/webp"
-            srcSet={`${imgBase}w_350${imgFolder}webp/${img}.webp`}
-          />
-          <img
-            className={styles['card__cnt--img']}
-            src={`${imgBase}w_350${imgFolder}jpg/${img}.jpg`}
-            width="350"
-            height="262"
-            alt={title}
-            loading="lazy"
-          />
-        </picture>
-      );
-    }
-    return <picture ref={domEl} className={imgCls} />;
-  };
-
   return (
     <div className={`${styles.card} pt--m`}>
       <CardContent className="tp-a--c pr--m pl--m">
         <h1 className="tp-s--xl tp-w--m c-txt--f1">{title}</h1>
         <p className="tp-s--xs pt--m pb--m c-txt--f2">{`Un'articolo di ${author}`}</p>
-        {picture()}
+        <WatchScroll stopWatching={isLoaded}>
+          {(scrollInfos) => (
+            <Picture
+              className={imgCls}
+              mqMap={imgRatio === '16:9' ? mqImgMap['r16-9'] : mqImgMap['r4-3']}
+              title={title}
+              img={img}
+              toLoad={!isLoaded}
+              scrollInfos={scrollInfos}
+              loaded={updateIsLoaded}
+            />
+          )}
+        </WatchScroll>
       </CardContent>
       <CardHoles />
       <CardContent tag="p" className={pCls}>
@@ -148,7 +187,6 @@ Ticket.propTypes = {
   desc: PropTypes.string,
   img: PropTypes.string,
   imgRatio: PropTypes.string,
-  scrollInfos: PropTypes.instanceOf(Object),
 };
 Ticket.defaultProps = {
   title: null,
@@ -156,5 +194,4 @@ Ticket.defaultProps = {
   desc: null,
   img: null,
   imgRatio: '4:3',
-  scrollInfos: {},
 };
