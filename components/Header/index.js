@@ -8,14 +8,17 @@ export default function Header() {
       <div className={`${styles.header__wrap} pl--m pr--m`}>
         <div className={styles.header__logo}>Logo</div>
         <div className={styles.header__nav}>
-          <a href="/" title="Primo link" className="c-txt--f2">
-            Primo link
+          <a href="/" title="Primo link" className="tp-w--m c-txt--f2">
+            Surf
           </a>
-          <a href="/" title="Secondo link" className="c-txt--f2">
-            Secondo link
+          <a href="/" title="Secondo link" className="tp-w--m c-txt--f2">
+            Mountain
           </a>
-          <a href="/" title="Terzo link" className="c-txt--f2">
-            Terzo link
+          <a href="/" title="Terzo link" className="tp-w--m c-txt--f2">
+            Comics
+          </a>
+          <a href="/" title="Terzo link" className="tp-w--m c-txt--f2">
+            React
           </a>
         </div>
       </div>
