@@ -110,7 +110,7 @@ function Ticket({ title, author, desc, img, imgRatio }) {
       <CardContent className="tp-a--c pr--m pl--m">
         <h1 className="tp-s--xl tp-w--m c-txt--f1">{title}</h1>
         <p className="tp-s--xs pt--m pb--m c-txt--f2">{`Un'articolo di ${author}`}</p>
-        {picture()}
+        <picture className={imgCls} />
       </CardContent>
       <CardHoles />
       <CardContent tag="p" className={pCls}>
