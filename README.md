@@ -2,6 +2,44 @@
 
 #### 29/12/2020
 
+Commit **d7c679a**
+
+WatchScroll optimization
+Introduce SVG icons
+Major file structure reorganization
+
+Performances did not change:
+
+##### Mobile - score: 96
+
+FCP: 2,1s
+
+Speed Index: 2,1s
+
+LCP: 2,5 s
+
+TtI: 2,3s
+
+TBT: 30 ms
+
+CLS: 0
+
+##### Desktop - score: 99
+
+FCP: 0,7s
+
+Speed Index: 0,7s
+
+LCP: 0,8s
+
+TtI: 0,7s
+
+TBT: 0ms
+
+CLS: 0
+
+#### 29/12/2020
+
 Commit **d7d4dae** "WatchScroll" component for JS img lazyload.
 
 On mobile this caused a performance increase: all metrics are back to previous values
