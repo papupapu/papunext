@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
+import WatchScroll from '../../WatchScroll';
 import Ticket from '../../Cards/Ticket';
 
 import styles from './twocols.module.scss';
@@ -26,11 +27,15 @@ function TwoColumns({ contents }) {
                 {col.title}
               </h2>
               {col.data.map((art, x) => (
-                <Ticket
-                  key={`col${n === 0 ? '1' : '2'}-${x + 1}`}
-                  {...art}
-                  imgRatio={imgRatio}
-                />
+                <WatchScroll key={`col${n === 0 ? '1' : '2'}-${x + 1}`}>
+                  {(scrollInfos) => (
+                    <Ticket
+                      {...art}
+                      imgRatio={imgRatio}
+                      scrollInfos={scrollInfos}
+                    />
+                  )}
+                </WatchScroll>
               ))}
             </div>
           );

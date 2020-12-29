@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import makeClassName from '../../../utils/makeClassName';
@@ -40,7 +40,25 @@ CardContent.defaultProps = {
 const imgBase = 'https://res.cloudinary.com/dia4050i1/image/upload/';
 const imgFolder = '/v1607806886/next/des/';
 
-function Ticket({ title, author, desc, img, imgRatio }) {
+function Ticket({ title, author, desc, img, imgRatio, scrollInfos }) {
+  const domEl = useRef(null);
+
+  const [lazy, setLazy] = useState(true);
+
+  useEffect(() => {
+    if (lazy && scrollInfos.coords !== null) {
+      const _vh = document.documentElement.clientHeight;
+      const el = domEl.current;
+      const offsetTop = el.offsetTop + el.parentNode.offsetTop;
+      const top = offsetTop - scrollInfos.coords < _vh;
+      const bot = offsetTop + el.offsetHeight - scrollInfos.coords <= _vh;
+
+      if (top || bot) {
+        setLazy(false);
+      }
+    }
+  }, [scrollInfos.coords, lazy]);
+
   const pCls = makeClassName([
     styles['card__cnt--p'],
     'tp-w--s',
@@ -69,40 +87,44 @@ function Ticket({ title, author, desc, img, imgRatio }) {
   };
 
   const picture = () => {
-    const mapping = imgRatio === '16:9' ? mqImgMap['r16-9'] : mqImgMap['r4-3'];
-    const sources = Object.keys(mapping)
-      .reverse()
-      .map((mq) => (
-        <>
+    if (!lazy) {
+      const mapping =
+        imgRatio === '16:9' ? mqImgMap['r16-9'] : mqImgMap['r4-3'];
+      const sources = Object.keys(mapping)
+        .reverse()
+        .map((mq) => (
+          <>
+            <source
+              type="image/webp"
+              media={`(min-width:${mq}px)`}
+              srcSet={`${imgBase}${mapping[mq]}${imgFolder}webp/${img}.webp`}
+            />
+            <source
+              type="image/jpeg"
+              media={`(min-width:${mq}px)`}
+              srcSet={`${imgBase}${mapping[mq]}${imgFolder}jpg/${img}.jpg`}
+            />
+          </>
+        ));
+      return (
+        <picture className={imgCls}>
+          {sources}
           <source
             type="image/webp"
-            media={`(min-width:${mq}px)`}
-            srcSet={`${imgBase}${mapping[mq]}${imgFolder}webp/${img}.webp`}
+            srcSet={`${imgBase}w_350${imgFolder}webp/${img}.webp`}
           />
-          <source
-            type="image/jpeg"
-            media={`(min-width:${mq}px)`}
-            srcSet={`${imgBase}${mapping[mq]}${imgFolder}jpg/${img}.jpg`}
+          <img
+            className={styles['card__cnt--img']}
+            src={`${imgBase}w_350${imgFolder}jpg/${img}.jpg`}
+            width="350"
+            height="262"
+            alt={title}
+            loading="lazy"
           />
-        </>
-      ));
-    return (
-      <picture className={imgCls}>
-        {sources}
-        <source
-          type="image/webp"
-          srcSet={`${imgBase}w_350${imgFolder}webp/${img}.webp`}
-        />
-        <img
-          className={styles['card__cnt--img']}
-          src={`${imgBase}w_350${imgFolder}jpg/${img}.jpg`}
-          width="350"
-          height="262"
-          alt={title}
-          loading="lazy"
-        />
-      </picture>
-    );
+        </picture>
+      );
+    }
+    return <picture ref={domEl} className={imgCls} />;
   };
 
   return (
@@ -110,7 +132,7 @@ function Ticket({ title, author, desc, img, imgRatio }) {
       <CardContent className="tp-a--c pr--m pl--m">
         <h1 className="tp-s--xl tp-w--m c-txt--f1">{title}</h1>
         <p className="tp-s--xs pt--m pb--m c-txt--f2">{`Un'articolo di ${author}`}</p>
-        <picture className={imgCls} />
+        {picture()}
       </CardContent>
       <CardHoles />
       <CardContent tag="p" className={pCls}>
@@ -126,6 +148,7 @@ Ticket.propTypes = {
   desc: PropTypes.string,
   img: PropTypes.string,
   imgRatio: PropTypes.string,
+  scrollInfos: PropTypes.instanceOf(Object),
 };
 Ticket.defaultProps = {
   title: null,
@@ -133,4 +156,5 @@ Ticket.defaultProps = {
   desc: null,
   img: null,
   imgRatio: '4:3',
+  scrollInfos: {},
 };
