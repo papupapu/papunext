@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
-import Ticket from '../../Cards/Ticket';
+import Ticket from '../../Atoms/Layout/Cards/Ticket';
 
 import styles from './twocols.module.scss';
 
@@ -9,7 +9,6 @@ function TwoColumns({ contents }) {
   if (!contents || !contents.length) {
     return null;
   }
-
   return (
     <div className={`${styles.wrap} mb--m c-bg--p`}>
       <div className={styles.wrap__cols}>

@@ -1,5 +1,9 @@
-style header - don't fuck around/seo
+solve sourceset key warning / svg viewBox
 --
+style header - don't fuck around/seo
+see if there's any possible js/css optimization
+--
+introduce modal - don't fuck around/seo
 introduce seofooter - seo/design
 style footer - don't fuck around/seo
 style slider - don't fuck around/seo

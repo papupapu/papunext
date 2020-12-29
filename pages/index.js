@@ -2,11 +2,11 @@ import React from 'react';
 
 import Head from 'next/head';
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Splash from '../components/HP/Splash';
-import TwoColumns from '../components/HP/TwoColumns';
-import Slides from '../components/HP/Slides';
+import Header from '../src/Atoms/Layout/Header';
+import Footer from '../src/Atoms/Layout/Footer';
+import Splash from '../src/HP/Splash';
+import TwoColumns from '../src/HP/TwoColumns';
+import Slides from '../src/HP/Slides';
 
 function topSliderContents(cat, secondSlot = null) {
   const add = !secondSlot ? 0 : 3;
