@@ -76,7 +76,7 @@ const colsContents = [
         author: 'Ciccio Pasticcio',
         desc:
           'L’Everest è da oltre 150 anni una delle vette più famosa, e più ambita, al mondo. Da quando, nel 1854, la cima venne denominata con il nome di Peak XV, l’Everest è un mito e un desiderio di alpinisti e amanti della montagna.',
-        img: 'col2-3',
+        img: 'col3-3',
       },
     ],
   },
