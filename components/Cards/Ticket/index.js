@@ -37,10 +37,7 @@ CardContent.defaultProps = {
   tag: null,
 };
 
-function Ticket() {
-  const t = `Tamara Lunger atterrata a Islamabad e pronta per il K2`;
-  const p = `Un'articolo di Ciccio pasticcio`;
-  const d = `Un'articolo di Ciccio pasticcio articolo di Ciccio pasticcio articolo di Ciccio pasticcio articolo di Ciccio pasticcio articolo di Ciccio pasticcio`;
+function Ticket({ title, author, desc, img, imgRatio }) {
   const pCls = makeClassName([
     styles['card__cnt--p'],
     'tp-w--s',
@@ -48,18 +45,36 @@ function Ticket() {
     'pl--m',
     'c-txt--f1',
   ]);
+  const imgCls = makeClassName([
+    'c-bg--p',
+    imgRatio === '16:9' && styles['r16-9'],
+  ]);
   return (
     <div className={`${styles.card} pt--m`}>
       <CardContent className="tp-a--c pr--m pl--m">
-        <h1 className="tp-s--xl tp-w--m c-txt--f1">{t}</h1>
-        <p className="tp-s--xs pt--m pb--m c-txt--f2">{p}</p>
-        <div className="c-bg--p" />
+        <h1 className="tp-s--xl tp-w--m c-txt--f1">{title}</h1>
+        <p className="tp-s--xs pt--m pb--m c-txt--f2">{`Un'articolo di ${author}`}</p>
+        <div className={imgCls}>{img}</div>
       </CardContent>
       <CardHoles />
       <CardContent tag="p" className={pCls}>
-        {d}
+        {desc}
       </CardContent>
     </div>
   );
 }
 export default Ticket;
+Ticket.propTypes = {
+  title: PropTypes.string,
+  author: PropTypes.string,
+  desc: PropTypes.string,
+  img: PropTypes.string,
+  imgRatio: PropTypes.string,
+};
+Ticket.defaultProps = {
+  title: null,
+  author: null,
+  desc: null,
+  img: null,
+  imgRatio: '4:3',
+};

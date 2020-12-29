@@ -25,9 +25,7 @@
         height: 0;
         padding-top: calc((100% / 4) * 3);
       }
-    }
-    @include breakpoint-l {
-      & div {
+      & div.r16-9 {
         height: 0;
         padding-top: calc((100% / 16) * 9);
       }

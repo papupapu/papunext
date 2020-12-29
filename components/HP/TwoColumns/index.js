@@ -1,31 +1,48 @@
-import React from 'react';
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 
 import Ticket from '../../Cards/Ticket';
 
 import styles from './twocols.module.scss';
 
-function TwoColumns() {
+function TwoColumns({ contents }) {
+  if (!contents || !contents.length) {
+    return null;
+  }
+
   return (
     <div className={`${styles.wrap} mb--m c-bg--p`}>
       <div className={styles.wrap__cols}>
-        <div className={`${styles.wrap__cols__col1} c-bg--s`}>
-          <h2 className={`${styles['wrap__cols--tit']} tp-s--xs c-txt--f1`}>
-            High altitude: le ultime notizie
-          </h2>
-          <Ticket />
-          <Ticket />
-          <Ticket />
-        </div>
-        <div className={styles.wrap__cols__col2}>
-          <h2 className={`${styles['wrap__cols--tit']} tp-s--xs c-txt--f1`}>
-            Everest: 100 anni di esplorazioni
-          </h2>
-          <Ticket />
-          <Ticket />
-          <Ticket />
-        </div>
+        {contents.map((col, n) => {
+          let colCls = styles.wrap__cols__col2;
+          let imgRatio = '16:9';
+          if (n === 0) {
+            colCls = `${styles.wrap__cols__col1} c-bg--s`;
+            imgRatio = null;
+          }
+          return (
+            <div key={`col${n === 0 ? '1' : '2'}`} className={colCls}>
+              <h2 className={`${styles['wrap__cols--tit']} tp-s--xs c-txt--f1`}>
+                {col.title}
+              </h2>
+              {col.data.map((art, x) => (
+                <Ticket
+                  key={`col${n === 0 ? '1' : '2'}-${x + 1}`}
+                  {...art}
+                  imgRatio={imgRatio}
+                />
+              ))}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 }
-export default TwoColumns;
+export default memo(TwoColumns);
+TwoColumns.propTypes = {
+  contents: PropTypes.instanceOf(Array),
+};
+TwoColumns.defaultProps = {
+  contents: [],
+};
