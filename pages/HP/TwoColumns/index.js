@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
-import Ticket from '../../Cards/Ticket';
+import Ticket from '../../../components/Layout/Cards/Ticket';
 
 import styles from './twocols.module.scss';
 

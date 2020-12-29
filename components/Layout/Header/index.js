@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icon from '../Icon';
+import Icon from '../../Utils/Icon';
 
 import styles from './header.module.scss';
 
@@ -9,7 +9,7 @@ export default function Header() {
     <div className={`${styles.header} c-bg--p`}>
       <div className={`${styles.header__wrap} pl--m pr--m`}>
         <div className={styles.header__logo}>
-          <Icon name="logo" style={{ fill: '#697684' }} />
+          <Icon name="logo" className="c-txt--f2" />
         </div>
         <div className={styles.header__nav}>
           <a href="/" title="Primo link" className="tp-w--m c-txt--f2">
