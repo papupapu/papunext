@@ -23,6 +23,7 @@ const CardContent = ({ className, children, tag }) => {
   const CTag = tag || 'div';
   return <CTag className={cls}>{children}</CTag>;
 };
+
 CardContent.propTypes = {
   className: PropTypes.string,
   children: PropTypes.oneOfType([
@@ -33,6 +34,7 @@ CardContent.propTypes = {
   ]),
   tag: PropTypes.string,
 };
+
 CardContent.defaultProps = {
   className: null,
   children: null,
@@ -53,36 +55,47 @@ const Picture = ({
 }) => {
   const domEl = useRef(null);
   useEffect(() => {
-    if (toLoad && scrollInfos.coords !== null) {
+    if (toLoad && scrollInfos && scrollInfos.coords !== null) {
       const _vh = document.documentElement.clientHeight;
       const el = domEl.current;
       const offsetTop = el.offsetTop + el.parentNode.offsetTop;
       const top = offsetTop - scrollInfos.coords < _vh;
       const bot = offsetTop + el.offsetHeight - scrollInfos.coords <= _vh;
-
+      /*
+        migliorare: bot valido solo se dir è valorizzato ed è up?
+      */
       if (top || bot) {
         loaded(false);
       }
     }
-  }, [scrollInfos.coords, toLoad]);
+  }, [scrollInfos, toLoad]);
 
   if (!toLoad) {
-    const sources = Object.keys(mqMap)
+    const jpgs = Object.keys(mqMap)
       .reverse()
       .map((mq) => (
-        <>
-          <source
-            type="image/webp"
-            media={`(min-width:${mq}px)`}
-            srcSet={`${imgBase}${mqMap[mq]}${imgFolder}webp/${img}.webp`}
-          />
-          <source
-            type="image/jpeg"
-            media={`(min-width:${mq}px)`}
-            srcSet={`${imgBase}${mqMap[mq]}${imgFolder}jpg/${img}.jpg`}
-          />
-        </>
+        <source
+          key={`jpg-${mq}-${img}`}
+          type="image/jpeg"
+          media={`(min-width:${mq}px)`}
+          srcSet={`${imgBase}${mqMap[mq]}${imgFolder}jpg/${img}.jpg`}
+        />
       ));
+    const webps = Object.keys(mqMap)
+      .reverse()
+      .map((mq) => (
+        <source
+          key={`webp-${mq}-${img}`}
+          type="image/webp"
+          media={`(min-width:${mq}px)`}
+          srcSet={`${imgBase}${mqMap[mq]}${imgFolder}webp/${img}.webp`}
+        />
+      ));
+
+    const sources = [];
+    Object.keys(mqMap).forEach((x, n) => {
+      sources.push(...[webps[n], jpgs[n]]);
+    });
 
     return (
       <picture className={className}>

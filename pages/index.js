@@ -2,8 +2,7 @@ import React from 'react';
 
 import Head from 'next/head';
 
-import Header from '../src/Atoms/Layout/Header';
-import Footer from '../src/Atoms/Layout/Footer';
+import Page from '../src/Page';
 import Splash from '../src/HP/Splash';
 import TwoColumns from '../src/HP/TwoColumns';
 import Slides from '../src/HP/Slides';
@@ -84,20 +83,20 @@ const colsContents = [
 
 export default function Home() {
   return (
-    <div className="glob_container">
-      <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-      </Head>
-      <Header />
-      <div className="glob_content">
-        <Splash slides={slides} />
-        <TwoColumns contents={colsContents} />
-        <Slides />
+    <Page>
+      <div className="glob_container">
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
+        </Head>
+        <div className="glob_content">
+          <Splash slides={slides} />
+          <TwoColumns contents={colsContents} />
+          <Slides />
+        </div>
       </div>
-      <Footer />
-    </div>
+    </Page>
   );
 }

@@ -1,4 +1,4 @@
-solve sourceset key warning / svg viewBox
+solve svg viewBox
 --
 style header - don't fuck around/seo
 see if there's any possible js/css optimization
