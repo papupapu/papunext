@@ -23,7 +23,7 @@ function TwoColumns({ contents }) {
           return (
             <div key={`col${n === 0 ? '1' : '2'}`} className={colCls}>
               <h2 className={`${styles['wrap__cols--tit']} tp-s--xs c-txt--f1`}>
-                {col.title}
+                {contents[col].title}
               </h2>
               {contents[col].articles.map((art, x) => (
                 <Ticket
