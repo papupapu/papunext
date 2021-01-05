@@ -10,7 +10,11 @@ import Splash from '../src/HP/Splash';
 import TwoColumns from '../src/HP/TwoColumns';
 import Slides from '../src/HP/Slides';
 
-const uri = 'https://run.mocky.io/v3/c8d00c0b-021d-4bbe-90ff-bdbc631e579d';
+const newLocal = process.env.NODE_ENV === 'development';
+const uri = newLocal
+  ? 'http://local.casa.it:3000/api/home'
+  : 'https://papunextjs.herokuapp.com/api/home';
+
 const fetcher = (url) => axios.get(url).then((r) => r.data);
 
 export async function getServerSideProps() {

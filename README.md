@@ -1,4 +1,10 @@
-## Milestones
+## Progress
+
+#### 05/01/2021
+
+Try nextjs api/routing
+
+Previous progress update: now depends on the device it start the test on... "Add missing titles to section1: possible LH score improvement test"
 
 #### 05/01/2021
 
