@@ -1,5 +1,12 @@
 ## Milestones
 
+#### 05/01/2021
+
+Commit **f3c43b3**
+
+Add `axios` as HTTP lib candidate: bundle up to 79.5kb (>10k).
+No performance decay observed.
+
 #### 29/12/2020
 
 Commit **d7c679a**
