@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <div className={`${styles.header} c-bg--p`}>
       <div className={`${styles.header__wrap} pl--m pr--m`}>
-        <div className={styles.header__logo}>
+        <div className={`${styles.header__logo} pt--m`}>
           <Icon name="logo" className="c-txt--f1" />
         </div>
         <div className={styles.header__nav}>

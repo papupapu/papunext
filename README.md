@@ -1,5 +1,20 @@
 ## Milestones
 
+#### 05/01/2021
+
+On mobile the score is still 96, but **LCP is now (orange) 2,6 s**
+
+Add missing titles to section1: possible LH score improvement test
+
+Fetch data mock from: https://run.mocky.io/v3/c8d00c0b-021d-4bbe-90ff-bdbc631e579d
+
+#### 05/01/2021
+
+Commit **f3c43b3**
+
+Add `axios` as HTTP lib candidate: bundle up to 79.5kb (>10k).
+No performance decay observed.
+
 #### 29/12/2020
 
 Commit **d7c679a**

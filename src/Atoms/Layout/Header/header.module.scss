@@ -16,8 +16,10 @@
     }
   }
   &__logo {
-    padding-top: 12px;
     height: 64px;
+    & svg {
+      height: 32px;
+    }
   }
   &__nav {
     display: none;

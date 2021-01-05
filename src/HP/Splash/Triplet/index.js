@@ -6,8 +6,6 @@ import Slide from '../Slide';
 import styles from '../splash.module.scss';
 
 function Triplet({ cat, order }) {
-  const category = Object.keys(cat)[0];
-  const catSlides = cat[category];
   let orderCls = styles['splash__triplet--main'];
   if (order !== 1) {
     orderCls =
@@ -18,11 +16,11 @@ function Triplet({ cat, order }) {
   const tripletCls = `${styles.splash__triplet} ${orderCls}`;
   return (
     <div className={tripletCls}>
-      {catSlides.map((slide, n) => {
+      {cat.articles.map((slide, n) => {
         const itemPos = n === 0 ? 'big' : 'reg';
         return (
           <Slide
-            key={`${category}${n + 1}`}
+            key={`${cat.title}${n + 1}`}
             contents={slide}
             className={`${styles[`splash__triplet--slide`]} ${
               styles[`splash__triplet--${itemPos}`]

@@ -136,7 +136,7 @@ Picture.defaultProps = {
   loaded: () => {},
 };
 
-function Ticket({ title, author, desc, img, imgRatio }) {
+function Ticket({ title, author, description, img, imgRatio }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const updateIsLoaded = () => setIsLoaded(true);
   const pCls = makeClassName([
@@ -188,7 +188,7 @@ function Ticket({ title, author, desc, img, imgRatio }) {
       </CardContent>
       <CardHoles />
       <CardContent tag="p" className={pCls}>
-        {desc}
+        {description}
       </CardContent>
     </div>
   );
@@ -197,14 +197,14 @@ export default Ticket;
 Ticket.propTypes = {
   title: PropTypes.string,
   author: PropTypes.string,
-  desc: PropTypes.string,
+  description: PropTypes.string,
   img: PropTypes.string,
   imgRatio: PropTypes.string,
 };
 Ticket.defaultProps = {
   title: null,
   author: null,
-  desc: null,
+  description: null,
   img: null,
   imgRatio: '4:3',
 };
