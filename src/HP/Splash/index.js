@@ -23,7 +23,7 @@ const enableScroll = () => {
   }
 };
 
-export default function Splash({ slides }) {
+export default function Splash({ sliderContent }) {
   const slider = useRef(null);
   const [vw, setVW] = useState(null);
   const [pos, setPos] = useState(null);
@@ -68,6 +68,8 @@ export default function Splash({ slides }) {
   //   setPos(coords);
   //   setCurrent(newCurrent);
   // };
+
+  const slides = Object.keys(sliderContent);
 
   const prevSlide = () => {
     const newCurrent = current - 1;
@@ -175,7 +177,13 @@ export default function Splash({ slides }) {
         onTouchEnd={touchEnd}
       >
         {slides.map((cat, x) => {
-          return <Triplet key={`${cat}${x + 1}`} order={x + 1} cat={cat} />;
+          return (
+            <Triplet
+              key={`${cat}${x + 1}`}
+              order={x + 1}
+              cat={sliderContent[cat]}
+            />
+          );
         })}
       </div>
       {prev}
@@ -184,8 +192,8 @@ export default function Splash({ slides }) {
   );
 }
 Splash.propTypes = {
-  slides: PropTypes.instanceOf(Array),
+  sliderContent: PropTypes.instanceOf(Object),
 };
 Splash.defaultProps = {
-  slides: [],
+  sliderContent: {},
 };
