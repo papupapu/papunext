@@ -1,5 +1,37 @@
 ## Progress
 
+#### 13/01/2021
+
+Api routing successfull
+
+##### Mobile - score: 98
+
+FCP: 1,5s
+
+Speed Index: 1,7s
+
+LCP: 2,3s
+
+TtI: 1,9s
+
+TBT: 30 ms
+
+CLS: 0
+
+##### Desktop - score: 99
+
+FCP: 0,6s
+
+Speed Index: 0,8s
+
+LCP: 0,8s
+
+TtI: 0,6s
+
+TBT: 0ms
+
+CLS: 0
+
 #### 05/01/2021
 
 Try nextjs api/routing

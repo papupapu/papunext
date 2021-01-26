@@ -14,6 +14,7 @@ function Triplet({ cat, order }) {
         : styles['splash__triplet--left'];
   }
   const tripletCls = `${styles.splash__triplet} ${orderCls}`;
+  
   return (
     <div className={tripletCls}>
       {cat.articles.map((slide, n) => {
@@ -22,6 +23,7 @@ function Triplet({ cat, order }) {
           <Slide
             key={`${cat.title}${n + 1}`}
             contents={slide}
+            custom={cat.title === 'Surf spots review' && n === 0}
             className={`${styles[`splash__triplet--slide`]} ${
               styles[`splash__triplet--${itemPos}`]
             }`}
